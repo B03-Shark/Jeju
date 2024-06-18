@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import supabase from '../../../supabase/supabase';
+import supabase from '../../supabase/supabase';
 
 function ReviewModal({ reviewId, onClose }) {
   const queryClient = useQueryClient();
-
-  // sample
-  reviewId = '4b91e35e-6fd4-4eee-bd82-21020f9257bd';
 
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState('');
