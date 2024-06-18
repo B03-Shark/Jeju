@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import Filter from '../components/Home/Filter/Filter';
 import Map from '../components/Home/Map';
+import useJejuStore from '../hooks/useJejuStore';
 
 function Home() {
+  const { jejuStores } = useJejuStore();
+
   return (
     <StWrapper>
-      <Filter />
-      <Map />
+      <Filter jejuStores={jejuStores} />
+      <Map jejuStores={jejuStores} />
     </StWrapper>
   );
 }

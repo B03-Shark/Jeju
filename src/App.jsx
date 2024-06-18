@@ -1,9 +1,14 @@
+import GlobalStyle from './GlobalStyle';
+import QueryProvider from './provider/QueryProvider';
 import Router from './shared/Router';
 
 function App() {
   return (
     <>
-      <Router />
+      <QueryProvider>
+        <GlobalStyle/>
+        <Router />
+      </QueryProvider>
     </>
   );
 }

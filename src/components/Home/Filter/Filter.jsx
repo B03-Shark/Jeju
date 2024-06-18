@@ -1,8 +1,7 @@
+function Filter({ jejuStores }) {
+  console.log(jejuStores);
 
-function FIlter() {
-  return (
-    <div>FIlter</div>
-  )
+  return <div>FIlter</div>;
 }
 
-export default FIlter
+export default Filter;
