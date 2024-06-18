@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import ReviewModal from '../components/Layout/Modal/ReviewModal';
+
 function Detail() {
   const [modalDisplay, setModalDisplay] = useState(false);
   const handleModal = () => {
@@ -7,8 +10,7 @@ function Detail() {
   console.log(import.meta.env.VITE_SUPABASE_URL);
   return (
     <div>
-      {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
-      {modalDisplay ? <Modal setModalDisplay={setModalDisplay} /> : ''}
+      {modalDisplay ? <ReviewModal onClick={handleModal} /> : ''}
       <button onClick={handleModal}>모달 버튼</button>
     </div>
   );
