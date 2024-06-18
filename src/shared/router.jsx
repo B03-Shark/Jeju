@@ -1,9 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "../components/layout/Layout";
-import Detail from "../pages/Detail";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import SignUp from "../pages/SignUp";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from '../components/Layout/Layout';
+import Detail from '../pages/Detail';
+import Home from '../pages/Home';
+import Login from '../pages/Login';
+import SignUp from '../pages/SignUp';
 
 const Router = () => {
   return (
