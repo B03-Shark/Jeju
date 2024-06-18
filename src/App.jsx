@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Router from './shared/Router';
-import ReviewModal from './components/Layout/Modal/ReviewModal';
 
 function App() {
   const queryClient = new QueryClient();
@@ -8,7 +7,7 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ReviewModal />
+        <Router />
       </QueryClientProvider>
     </>
   );
