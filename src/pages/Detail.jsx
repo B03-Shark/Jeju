@@ -8,6 +8,7 @@ function Detail() {
     setModalDisplay((prev) => !prev);
   };
 
+
   return (
     <div>
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
