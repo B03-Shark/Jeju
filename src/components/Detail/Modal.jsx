@@ -1,19 +1,17 @@
 import styled from 'styled-components';
 
-function Modal({ setModalDisplay }) {
+function Modal({ setModalDisplay, children }) {
   const handleModal = () => {
     setModalDisplay((prev) => !prev);
   };
 
   return (
     <StModal>
-      <StUserBox>
-        <StUserAvatar src={''} />
-        <div>
+        <StUserBox>
+          <StUserAvatar src={''} />
           <StUserName>{'닉네임'}</StUserName>
-          <StUserDate>{'시간'}</StUserDate>
-        </div>
-      </StUserBox>
+        </StUserBox>
+        <div>{children}</div>
       <StExitBtn onClick={handleModal}>X</StExitBtn>
     </StModal>
   );
@@ -52,6 +50,7 @@ const StUserBox = styled.div`
   width: 100%;
   height: 20px;
   display: flex;
+  justify-content: space-between;
   gap: 10px;
 `;
 
@@ -68,13 +67,6 @@ const StUserName = styled.h2`
   margin: 0;
   text-align: start;
   font-size: 13px;
-  font-weight: 700;
-`;
-const StUserDate = styled.h3`
-  width: 100%;
-  margin: 0;
-  text-align: start;
-  font-size: 10px;
   font-weight: 700;
 `;
 
