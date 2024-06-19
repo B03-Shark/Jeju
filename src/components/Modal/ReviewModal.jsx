@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import supabase from '../../supabase/supabase';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteReview, updateReview } from '../../api/review.api';
 
 function ReviewModal({ reviewId, onClose }) {
   const queryClient = useQueryClient();
@@ -9,29 +9,7 @@ function ReviewModal({ reviewId, onClose }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState('');
 
-  const getReview = async () => {
-    const { data, error } = await supabase.from('reviews').select().eq('id', reviewId).single();
-    if (error) throw new Error(error.message);
-    return data;
-  };
-
-  const updateReview = async () => {
-    const { error } = await supabase.from('reviews').update({ content: editedContent }).eq('id', reviewId);
-    if (error) throw new Error(error.message);
-  };
-
-  const deleteReview = async () => {
-    const { error } = await supabase.from('reviews').delete().eq('id', reviewId);
-    if (error) throw new Error(error.message);
-  };
-
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['review', reviewId],
-    queryFn: getReview,
-    onSuccess: (data) => {
-      setEditedContent(data.content);
-    }
-  });
+  const data = queryClient.getQueryData(['reviewList']).filter((review) => review.id === reviewId);
 
   const updateMutation = useMutation({
     mutationFn: updateReview,
@@ -52,27 +30,21 @@ function ReviewModal({ reviewId, onClose }) {
   return (
     <StModalBackground onClick={onClose}>
       <StModalContainer onClick={(e) => e.stopPropagation()}>
-        {isLoading ? (
-          <h2>Loading...</h2>
-        ) : error ? (
-          <div>Error: {error.message}</div>
-        ) : (
-          <>
-            <h2>Review Details</h2>
-            {isEditing ? (
-              <textarea value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
-            ) : (
-              <p>{data.content}</p>
-            )}
-            <button onClick={() => deleteMutation.mutate()}>삭제</button>
-            {isEditing ? (
-              <button onClick={() => updateMutation.mutate()}>저장</button>
-            ) : (
-              <button onClick={() => setIsEditing(true)}>수정</button>
-            )}
-            <button onClick={onClose}>닫기</button>
-          </>
-        )}
+        <>
+          <h2>Review Details</h2>
+          {isEditing ? (
+            <textarea value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
+          ) : (
+            <p>{data.content}</p>
+          )}
+          <button onClick={() => deleteMutation.mutate()}>삭제</button>
+          {isEditing ? (
+            <button onClick={() => updateMutation.mutate()}>저장</button>
+          ) : (
+            <button onClick={() => setIsEditing(true)}>수정</button>
+          )}
+          <button onClick={onClose}>닫기</button>
+        </>
       </StModalContainer>
     </StModalBackground>
   );
