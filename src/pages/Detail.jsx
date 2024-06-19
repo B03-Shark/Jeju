@@ -4,6 +4,7 @@ import Modal from '../components/Detail/Modal';
 import { useParams } from 'react-router-dom';
 import ReviewModal from '../components/Modal/ReviewModal';
 import ReviewCardList from '../components/Detail/ReviewCardList';
+import Storedata from '../components/Detail/Storedata';
 
 function Detail() {
   const [modalDisplay, setModalDisplay] = useState(false);
@@ -29,6 +30,7 @@ function Detail() {
       {modalDisplay ? <Modal setModalDisplay={setModalDisplay} /> : ''}
       <ReviewCardList dataCd={dataCd} />
       <button onClick={handleModal}>모달 버튼</button>
+      <Storedata />
 
       <br></br>
       <br></br>
