@@ -11,18 +11,21 @@ function useJejuStore() {
     }))
   );
 
-  const { data: jejuStores } = useQuery({
+  const {
+    data: jejuStores,
+    isPending,
+    isError
+  } = useQuery({
     queryKey: ['jejuStores'],
-    queryFn: () => getJejuStores()
+    queryFn: getJejuStores
   });
-
   useEffect(() => {
     if (jejuStores) {
       initJejuStores(jejuStores.item);
     }
   }, [jejuStores]);
 
-  return { jejuStores };
+  return { jejuStores, isPending, isError };
 }
 
 export default useJejuStore;
