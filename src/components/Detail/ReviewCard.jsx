@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-function ReviewCard({ data }) {
+function ReviewCard({ data, onClick }) {
   const { id, created_at, content, image_url, nickname } = data;
 
   return (
     <>
-      <StCardDiv>
+      <StCardDiv onClick={onClick}>
         <StUserBox>
           <StUserAvatar />
           <div>
