@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Modal from '../components/Detail/Modal';
+import { useParams } from 'react-router-dom';
 import ReviewModal from '../components/Modal/ReviewModal';
+import ReviewCardList from '../components/Detail/ReviewCardList';
+import Storedata from '../components/Detail/Storedata';
 
 function Detail() {
   const [modalDisplay, setModalDisplay] = useState(false);
+  const { id: dataCd } = useParams();
 
   const handleModal = () => {
     setModalDisplay((prev) => !prev);
@@ -24,7 +28,9 @@ function Detail() {
     <div>
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
       {modalDisplay ? <Modal setModalDisplay={setModalDisplay} /> : ''}
+      <ReviewCardList dataCd={dataCd} />
       <button onClick={handleModal}>모달 버튼</button>
+      <Storedata />
 
       <br></br>
       <br></br>
