@@ -3,10 +3,12 @@ import Filter from '../components/Home/Filter/Filter';
 import List from '../components/Home/List/List';
 import StoresMap from '../components/Home/StoresMap';
 import useJejuStore from '../hooks/useJejuStore';
+import { useOutletContext } from 'react-router-dom';
 
 function Home() {
   const { jejuStores } = useJejuStore();
-  console.log(jejuStores);
+  const { searchWord } = useOutletContext();
+
   return (
     <>
       <StWrapper>
@@ -14,7 +16,7 @@ function Home() {
         <StoresMap jejuStores={jejuStores} />
       </StWrapper>
       <StBottomWrapper>
-        <List jejuStores={jejuStores} />
+        <List jejuStores={jejuStores} searchWord={searchWord} />
       </StBottomWrapper>
     </>
   );

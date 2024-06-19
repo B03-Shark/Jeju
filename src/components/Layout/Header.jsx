@@ -2,8 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import search from '../../assets/search.png';
 import store from '../../assets/store.png';
 import styled from 'styled-components';
+import useJejuStore from '../../hooks/useJejuStore';
+import { useState } from 'react';
 
-function Header() {
+function Header({ searchWord, setSearchWord }) {
   const navigate = useNavigate();
 
   return (
@@ -18,6 +20,11 @@ function Header() {
         />
       </StLeftWrap>
       <StRightWrap>
+        <StInput
+          value={searchWord}
+          onChange={(e) => setSearchWord(e.target.value)}
+          placeholder="상호명을 검색해보세요."
+        />
         <StSearchImg src={search} alt="searchImg" />
       </StRightWrap>
     </StHeader>
@@ -43,6 +50,7 @@ const StRightWrap = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
+  gap: 16px;
 `;
 
 const StLogoImg = styled.img`
@@ -55,4 +63,9 @@ const StSearchImg = styled.img`
   width: 43px;
   height: 43px;
   border-radius: 50%;
+`;
+
+const StInput = styled.input`
+  width: 15rem;
+  height: 2rem;
 `;
