@@ -15,10 +15,10 @@ function ReviewModal({ review, onClose }) {
   const updateMutation = useMutation({
     mutationFn: updateReview,
     onSuccess: () => {
-      queryClient.setQueryData(['reviews', id], (oldData) => {
+      queryClient.setQueryData(['reviewList', id], (oldData) => {
         return { ...oldData, content: editedContent };
       });
-      queryClient.invalidateQueries(['reviews', id]);
+      queryClient.invalidateQueries(['reviewList', id]);
       review.content = editedContent;
       setIsEditing(false);
     },
@@ -30,7 +30,7 @@ function ReviewModal({ review, onClose }) {
   const deleteMutation = useMutation({
     mutationFn: deleteReview,
     onSuccess: () => {
-      queryClient.invalidateQueries('reviews');
+      queryClient.invalidateQueries('reviewList');
       onClose();
     }
   });
