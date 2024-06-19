@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Filter from '../components/Home/Filter/Filter';
-import Map from '../components/Home/Map';
-import useJejuStore from '../hooks/useJejuStore';
 import List from '../components/Home/List/List';
+import StoresMap from '../components/Home/StoresMap';
+import useJejuStore from '../hooks/useJejuStore';
 
 function Home() {
   const { jejuStores } = useJejuStore();
@@ -10,8 +10,8 @@ function Home() {
   return (
     <>
       <StWrapper>
-        {/* <Filter jejuStores={jejuStores} />
-        <Map jejuStores={jejuStores} /> */}
+        <Filter jejuStores={jejuStores} />
+        <StoresMap jejuStores={jejuStores} />
       </StWrapper>
       <StBottomWrapper>
         <List jejuStores={jejuStores} />
