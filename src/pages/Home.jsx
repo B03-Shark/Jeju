@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Filter from '../components/Home/Filter/Filter';
-import Map from '../components/Home/Map';
+import StoresMap from '../components/Home/StoresMap';
 import useJejuStore from '../hooks/useJejuStore';
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
   return (
     <StWrapper>
       <Filter jejuStores={jejuStores} />
-      <Map jejuStores={jejuStores} />
+      <StoresMap jejuStores={jejuStores} />
     </StWrapper>
   );
 }
