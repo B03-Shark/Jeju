@@ -30,9 +30,7 @@ function Detail() {
       <br></br>
       <br></br>
 
-      {/* 리뷰 아이템  */}
       <button onClick={() => handleItemClick('4b91e35e-6fd4-4eee-bd82-21020f9257bd')}>희수 모달 열기</button>
-
       {selectedReview && <ReviewModal reviewId={selectedReview} onClose={handleCloseModal} />}
     </div>
   );

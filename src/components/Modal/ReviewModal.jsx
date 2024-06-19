@@ -64,14 +64,12 @@ function ReviewModal({ reviewId, onClose }) {
             ) : (
               <p>{data.content}</p>
             )}
-            <div>
-              <button onClick={() => deleteMutation.mutate()}>삭제</button>
-              {isEditing ? (
-                <button onClick={() => updateMutation.mutate()}>저장</button>
-              ) : (
-                <button onClick={() => setIsEditing(true)}>수정</button>
-              )}
-            </div>
+            <button onClick={() => deleteMutation.mutate()}>삭제</button>
+            {isEditing ? (
+              <button onClick={() => updateMutation.mutate()}>저장</button>
+            ) : (
+              <button onClick={() => setIsEditing(true)}>수정</button>
+            )}
             <button onClick={onClose}>닫기</button>
           </>
         )}
