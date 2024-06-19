@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-function Checkbox({ children, checked, handleChange }) {
+function Checkbox({ children, handleChange, checked }) {
   return (
     <label>
       <StCheckBoxInput
         type="checkbox"
-        checked={checked}
-        onChange={({ target: { checked } }) => handleChange(checked)}
+        // checked={checked}
+        value={children}
+        onChange={(e) => handleChange(e)}
       />
       {children}
     </label>
