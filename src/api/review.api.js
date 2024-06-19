@@ -7,13 +7,13 @@ const getReviewlist = async ({ queryKey }) => {
   return data;
 };
 
-const updateReview = async (editedContent, reviewId) => {
-  const { error } = await supabase.from('reviews').update({ content: editedContent }).eq('id', reviewId);
+const updateReview = async ({ id, content }) => {
+  const { error } = await supabase.from('reviews').update({ content }).eq('id', id);
   if (error) throw new Error(error.message);
 };
 
-const deleteReview = async (reviewId) => {
-  const { error } = await supabase.from('reviews').delete().eq('id', reviewId);
+const deleteReview = async ({ id }) => {
+  const { error } = await supabase.from('reviews').delete().eq('id', id);
   if (error) throw new Error(error.message);
 };
 
