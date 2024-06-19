@@ -15,7 +15,7 @@ function List({ jejuStores }) {
         <StStoreItem
           key={index}
           onClick={() => {
-            navigate(`/detail/${store.bsshNm}`);
+            navigate(`/detail/${store.dataCd}`);
           }}
         >
           <div>

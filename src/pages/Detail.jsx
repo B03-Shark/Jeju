@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Modal from '../components/Detail/Modal';
+import Storedata from '../components/Detail/Storedata';
 
 function Detail() {
   const [modalDisplay, setModalDisplay] = useState(false);
@@ -8,12 +9,12 @@ function Detail() {
     setModalDisplay((prev) => !prev);
   };
 
-
   return (
     <div>
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
       {modalDisplay ? <Modal setModalDisplay={setModalDisplay} /> : ''}
       <button onClick={handleModal}>모달 버튼</button>
+      <Storedata />
     </div>
   );
 }
