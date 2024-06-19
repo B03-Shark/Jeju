@@ -1,9 +1,15 @@
 import axios from 'axios';
 
 const jejuStoreUrl = import.meta.env.VITE_API_JEJU_STORE_URL;
-const jejuStoreKey = import.meta.env.VITE_API_JEJU_STORE_KEY;
+const jejuStoreDecodingKey = import.meta.env.VITE_API_JEJU_STORE_DECODING_KEY;
+const jejuStoreEncodingKey = import.meta.env.VITE_API_JEJU_STORE_ENCODING_KEY;
 
-export const jejuStoreAPI = axios.create({
+export const jejuStoreAPIDecoding = axios.create({
   baseURL: jejuStoreUrl,
-  params: { serviceKey: jejuStoreKey }
+  params: { serviceKey: jejuStoreDecodingKey }
+});
+
+export const jejuStoreAPIEncoding = axios.create({
+  baseURL: jejuStoreUrl,
+  params: { serviceKey: jejuStoreEncodingKey }
 });
