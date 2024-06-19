@@ -1,22 +1,15 @@
 import { useState } from 'react';
-import supabase from '../supabase/supabase';
+import { useNavigate } from 'react-router-dom';
+import { signIn, signOut } from '../components/Auth/auth';
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (email, password) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-    if (data) {
-      alert('로그인 성공');
-      console.log(data);
-    } else {
-      alert('로그인 실패');
-      console.log(error);
-    }
+  const handleSignIn = () => {
+    signIn(email, password);
+    // navigate("/")
   };
 
   return (
@@ -28,11 +21,12 @@ function Login() {
 
       <button
         onClick={() => {
-          handleLogin(email, password);
+          handleSignIn();
         }}
       >
         로그인
       </button>
+      <button onClick={signOut}>로그아웃</button>
     </div>
   );
 }

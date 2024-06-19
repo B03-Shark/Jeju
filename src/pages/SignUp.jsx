@@ -1,33 +1,19 @@
 import { useState } from 'react';
-import supabase from '../supabase/supabase';
+import { useNavigate } from 'react-router-dom';
+import { signUp } from '../components/Auth/auth';
 
 function SignUp() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
-  // 회원가입
-  const handleSignUp = async (email, password, nickname) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          displayName: nickname
-        }
-      }
-    });
-    if (error) {
-      console.error(error.message);
-      return;
-    } else {
-      alert('회원가입 성공');
-      await supabase.from('users').insert({
-        id: data.user.id,
-        password,
-        email,
-        nickname
-      });
-    }
+
+  const handleSignUp = () => {
+    signUp(email, password, nickname);
+    // navigate('/'); 다른 기능의 console.log로 혼잡하므로 현재는 주석처리
+    setEmail('');
+    setPassword('');
+    setNickname('');
   };
 
   return (
@@ -43,7 +29,7 @@ function SignUp() {
 
       <button
         onClick={() => {
-          handleSignUp(email, password, nickname);
+          handleSignUp();
         }}
       >
         회원가입
