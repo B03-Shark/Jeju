@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 function ReviewCard({ data }) {
-  const { created_at, content, image_url, nickname } = data;
+  const { id, created_at, content, image_url, nickname } = data;
+
   return (
     <>
       <StCardDiv>
