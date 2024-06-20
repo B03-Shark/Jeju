@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import store from '../../assets/store.png';
+import Logo from '../../assets/Logo.png';
 import styled from 'styled-components';
 import useSearch from '../../hooks/useSearch';
 import { useRef, useState } from 'react';
@@ -36,11 +36,16 @@ function Header() {
   return (
     <StHeader>
       <StLeftWrap>
-        <StLogoImg onClick={handleLogoClick} src={store} alt="logoImg" />
+        <StLogoImg onClick={handleLogoClick} src={Logo} alt="logoImg" />
       </StLeftWrap>
       <StRigthWrap>
-        {isLoggedin && <div>{JSON.parse(localStorage.getItem('user')).nickname}</div>}
-        <StButton onClick={() => handleLogInOut()}>{isLoggedin ? '로그아웃' : '로그인'}</StButton>
+        {isLoggedin && (
+          <StNicknameWrap>
+            <p>🍊</p>
+            <div>{JSON.parse(localStorage.getItem('user')).nickname}</div>
+          </StNicknameWrap>
+        )}
+        <StButton onClick={() => handleLogInOut()}>{isLoggedin ? '🍊 로그아웃' : '로그인'}</StButton>
       </StRigthWrap>
     </StHeader>
   );
@@ -49,23 +54,17 @@ function Header() {
 export default Header;
 
 const StHeader = styled.div`
-  height: 6rem;
+  height: 110px;
   background-color: #ffc1634a;
   justify-content: space-between;
   display: flex;
   align-items: center;
-  padding: 0 64px;
+  padding: 0 170px;
   margin-bottom: 20px;
 `;
 const StLeftWrap = styled.div`
   display: flex;
   gap: 10px;
-`;
-const StForm = styled.form`
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  gap: 16px;
 `;
 
 const StButton = styled.button`
@@ -75,24 +74,31 @@ const StButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-`;
-const StSearchImg = styled.img`
-  width: 43px;
-  height: 43px;
-  border-radius: 50%;
+  font-size: 19px;
+  font-weight: 600;
+  color: #7d7d7d;
+
+  &:hover {
+    color: #e16539;
+  }
 `;
 const StLogoImg = styled.img`
-  width: 64px;
-  height: 64px;
+  width: 170px;
+  height: 180px;
   cursor: pointer;
-`;
-
-const StInput = styled.input`
-  width: 15rem;
-  height: 2rem;
 `;
 
 const StRigthWrap = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 5px;
+  font-size: 19px;
+  font-weight: 600;
+  align-items: center;
+  color: #7d7d7d;
+`;
+
+const StNicknameWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
