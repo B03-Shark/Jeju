@@ -20,6 +20,7 @@ function StoresMap() {
   );
 
   useEffect(() => {
+    console.log(jejuStores);
     setFilteredStore(jejuStores);
     if (typeFilters.length > 0) {
       typeFilters.forEach((typeFilter) => {
