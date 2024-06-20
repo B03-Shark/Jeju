@@ -7,11 +7,11 @@ function Modal({ setModalDisplay, children }) {
 
   return (
     <StModal>
-        <StUserBox>
-          <StUserAvatar src={''} />
-          <StUserName>{'닉네임'}</StUserName>
-        </StUserBox>
-        <div>{children}</div>
+      <StUserBox>
+        <StUserAvatar src={''} />
+        <StUserName>{'닉네임'}</StUserName>
+      </StUserBox>
+      <div>{children}</div>
       <StExitBtn onClick={handleModal}>X</StExitBtn>
     </StModal>
   );

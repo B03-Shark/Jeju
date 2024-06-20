@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getReviewlist } from '../../api/review.api';
-
+import styled from 'styled-components';
 import ReviewCard from './ReviewCard';
 import ReviewModal from '../Modal/ReviewModal';
 
@@ -17,6 +17,7 @@ function ReviewCardList({ dataCd }) {
     queryFn: getReviewlist
   });
 
+  console.log(reviewList);
   if (isPending) {
     return <div>리뷰 리스트를 로딩중입니다...</div>;
   }
@@ -34,14 +35,17 @@ function ReviewCardList({ dataCd }) {
   };
 
   return (
-    <>
+    <StCardBox>
       {reviewList.map((review) => {
-        return <ReviewCard key={review.id} data={review} onClick={() => handleItemClick(review)} />;
+        return <ReviewCard key={review.id} review={review} onClick={() => handleItemClick(review)} />;
       })}
-
       {selectedReview && <ReviewModal review={selectedReview} onClose={handleCloseModal} />}
-    </>
+    </StCardBox>
   );
 }
+
+const StCardBox = styled.div`
+  display: flex;
+`;
 
 export default ReviewCardList;
