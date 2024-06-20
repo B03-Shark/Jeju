@@ -7,4 +7,10 @@ const getReviewlist = async ({ queryKey }) => {
   return data;
 };
 
-export { getReviewlist };
+const addReview = async (newReview) => {
+  const { error } = await supabase.from("reviews").insert(newReview);
+
+  if (error) console.log(error);
+};
+
+export { getReviewlist, addReview };

@@ -28,7 +28,7 @@ function Detail() {
   return (
     <div>
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
-      {modalDisplay ? <Modal setModalDisplay={setModalDisplay}><PostModal/></Modal> : ''}
+      {modalDisplay ? <Modal setModalDisplay={setModalDisplay}><PostModal /></Modal> : ''}
       <ReviewCardList dataCd={dataCd} />
       <button onClick={handleModal}>리뷰 작성버튼</button>
       <Storedata />
