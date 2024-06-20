@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import GlobalStyle from './GlobalStyle';
 import Router from './shared/Router';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools />
+        <GlobalStyle />
         <Router />
       </QueryClientProvider>
     </>

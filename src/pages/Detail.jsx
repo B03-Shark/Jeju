@@ -27,7 +27,6 @@ function Detail() {
       )}
       <ReviewCardList dataCd={dataCd} />
       <button onClick={handleModal}>모달 버튼</button>
-      <Storedata />
     </div>
   );
 }
