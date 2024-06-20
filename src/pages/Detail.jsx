@@ -33,9 +33,9 @@ function Detail() {
     return <div>데이터 가져오는 중에 에러 발생</div>;
   }
 
-  // if (!selectedStoreData) {
-  //   return <div>데이터 없음</div>;
-  // }
+  if (!selectedStoreData) {
+    return <div>데이터 없음</div>;
+  }
   return (
     <div>
       <StStoreDataWrapper>
