@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import LikeBtn from './LikeBtn';
 
-function ReviewCard({ data, onClick }) {
-  const { id, created_at, content, image_url, nickname } = data;
+function ReviewCard({ review, onClick }) {
+  const { id, created_at, content, image_url, nickname, likes, dataCd } = review;
 
   return (
     <>
@@ -17,10 +18,8 @@ function ReviewCard({ data, onClick }) {
           <img src={image_url} alt="" />{' '}
         </StImgDiv>
         <StTextDiv>
+          <LikeBtn likes={likes} review_id={id} dataCd={dataCd} />
           <StTextP>{content}</StTextP>
-          {/* <StFavorDiv>
-            <StFavorSpan>{item.like}</StFavorSpan>
-          </StFavorDiv> */}
         </StTextDiv>
       </StCardDiv>
     </>
@@ -66,40 +65,26 @@ const StUserDate = styled.h3`
   font-weight: 700;
 `;
 
-const StH2 = styled.div`
-  box-sizing: border-box;
-  padding: 0 20px;
-  text-align: center;
-  margin-top: 5px;
-  font-weight: 600;
-  width: 100%;
-  height: 1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-
-const StNickNameDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 30px 6px 20px;
-`;
-
 const StTextDiv = styled.div`
   font-size: 1.2rem;
+  width: 230px;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin: 0 20px;
 `;
 
 const StTextP = styled.p`
+  display: block;
+  margin: 0;
   font-size: 15px;
-  max-width: 180px;
-  height: 17px;
-  overflow: hidden;
+  max-width: 230px;
+  height: 45px;
+  overflow-y: hidden;
+  overflow-wrap: break-word;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: wrap;
 `;
 
 const StImgDiv = styled.div`

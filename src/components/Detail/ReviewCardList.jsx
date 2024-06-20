@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getReviewlist } from '../../api/review.api';
-
+import styled from 'styled-components';
 import ReviewCard from './ReviewCard';
 import ReviewModal from '../Modal/ReviewModal';
 
@@ -34,14 +34,17 @@ function ReviewCardList({ dataCd }) {
   };
 
   return (
-    <>
+    <StCardBox>
       {reviewList.map((review) => {
-        return <ReviewCard key={review.id} data={review} onClick={() => handleItemClick(review.id)} />;
+        return <ReviewCard key={review.id} review={review} onClick={() => handleItemClick(review)} />;
       })}
-
-      {selectedReviewId && <ReviewModal reviewId={selectedReviewId} onClose={handleCloseModal} />}
-    </>
+      {selectedReview && <ReviewModal review={selectedReview} onClose={handleCloseModal} />}
+    </StCardBox>
   );
 }
+
+const StCardBox = styled.div`
+  display: flex;
+`;
 
 export default ReviewCardList;
