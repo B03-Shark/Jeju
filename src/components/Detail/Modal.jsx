@@ -1,17 +1,19 @@
 import styled from 'styled-components';
+import { getUser } from '../Auth/auth';
 
 function Modal({ setModalDisplay, children }) {
+  const user = getUser();
   const handleModal = () => {
     setModalDisplay((prev) => !prev);
   };
 
   return (
     <StModal>
-        <StUserBox>
-          <StUserAvatar src={''} />
-          <StUserName>{'닉네임'}</StUserName>
-        </StUserBox>
-        <div>{children}</div>
+      <StUserBox>
+        <StUserAvatar src={''} />
+        <StUserName>{user.nickname}</StUserName>
+      </StUserBox>
+      <div>{children}</div>
       <StExitBtn onClick={handleModal}>X</StExitBtn>
     </StModal>
   );

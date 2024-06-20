@@ -60,7 +60,7 @@ function List() {
             <p>{store.indutyNm}</p>
           </div>
           <div>
-            <p>{store.prdlstCn}</p>
+            <p>{store.rnAdres}</p>
           </div>
         </StStoreItem>
       ))}

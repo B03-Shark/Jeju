@@ -29,6 +29,7 @@ const StWrapper = styled.main`
   justify-content: center;
   gap: 15px;
   max-width: 1800px;
+  margin-bottom: 36px;
 `;
 
 const StMainWrapper = styled.div`
