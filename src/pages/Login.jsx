@@ -9,7 +9,7 @@ function Login() {
 
   const handleSignIn = () => {
     signIn(email, password);
-    // navigate("/")
+    navigate('/');
   };
 
   return (
@@ -18,7 +18,6 @@ function Login() {
       <input type="text" placeholder="이메일" value={email} onChange={(e) => setEmail(e.target.value)} />
       <label htmlFor="password">패스워드</label>
       <input type="password" placeholder="패스워드" value={password} onChange={(e) => setPassword(e.target.value)} />
-
       <button
         onClick={() => {
           handleSignIn();
@@ -26,7 +25,7 @@ function Login() {
       >
         로그인
       </button>
-      <button onClick={signOut}>로그아웃</button>
+      <p onClick={() => navigate('/')}>홈으로</p>
     </div>
   );
 }
