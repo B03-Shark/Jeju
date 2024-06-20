@@ -29,7 +29,6 @@ export default SearchForm;
 
 const StForm = styled.form`
   display: flex;
-
   gap: 16px;
 `;
 
@@ -50,6 +49,8 @@ const StImgContainer = styled.div`
 `;
 
 const StInput = styled.input`
-  width: 15rem;
+  width: 23rem;
   height: 2rem;
+  border: solid 1px gray;
+  border-radius: 10px;
 `;
