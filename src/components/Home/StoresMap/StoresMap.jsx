@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Map, MapMarker, MarkerClusterer } from 'react-kakao-maps-sdk';
 import { useShallow } from 'zustand/react/shallow';
+import useSearch from '../../../hooks/useSearch';
 import useFilterStore from '../../../zustand/filter.store';
 import useFilteredJejuStore from '../../../zustand/filteredjeju.store';
 
 function StoresMap() {
+    const { appliedSearchWord: searchWord } = useSearch();
   const { jejuStores } = useFilteredJejuStore(
     useShallow((state) => ({
       jejuStores: state.jejuStores
@@ -33,6 +35,7 @@ function StoresMap() {
     }
   }, [jejuStores, typeFilters, priceFilter]);
 
+  const searchedStores = filteredStores.filter((store) => store.bsshNm.includes(searchWord));
   return (
     <div>
       <Map
@@ -45,8 +48,8 @@ function StoresMap() {
         level={9}
       >
         <MarkerClusterer>
-          {filteredStores &&
-            filteredStores.map((jejuStoreItem) => (
+          {searchedStores &&
+            searchedStores.map((jejuStoreItem) => (
               <MapMarker
                 style={{ border: 'tranparent' }}
                 position={{ lat: jejuStoreItem.laCrdnt, lng: jejuStoreItem.loCrdnt }}
