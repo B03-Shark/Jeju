@@ -202,15 +202,24 @@
 
 ### 📂pages
 
-- Detail
-- Home
+- Detail.jsx
+- Home.jsx
   - HomePage를 보여주며 필터, 검색, 지도 컴포넌트로 이루어져 있습니다.
-- Login
-- SignUp
+- Login.jsx
+- SignUp.jsx
 
 ### 📂supabase
 
+- supabase.js
+
 ### 📂zustand
+
+- filter.store.js
+  - Filter 컴포넌트에서 업종의 체크박스를 해제할 때 addFilter 함수를 호출하여 typeFilters에 삽압히고, 업종의 체크박스를 체크할 때 delFilter 함수를 호출하여 typeFilters에서 제거합니다.
+  - 가격대를 선택할 때에는 setPriceFilter를 호출하여 priceFilter의 값을 변경합니다.
+- filteredjeju.store.js
+  - initJejuStores 함수를 호출하여 제주시 착한 가격 업소 데이터를 전처리하고 jejuStores에 저장합니다.
+- SearchStore.js 
 
 
 <br />
