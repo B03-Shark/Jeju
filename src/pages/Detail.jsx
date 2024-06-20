@@ -46,9 +46,6 @@ function Detail() {
         </StStoreDataRight>
       </StStoreDataWrapper>
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
-<<<<<<< HEAD
-      {modalDisplay ? <Modal setModalDisplay={setModalDisplay}><PostModal /></Modal> : ''}
-=======
       {modalDisplay ? (
         <Modal setModalDisplay={setModalDisplay}>
           <PostModal />
@@ -56,7 +53,6 @@ function Detail() {
       ) : (
         ''
       )}
->>>>>>> dev
       <ReviewCardList dataCd={dataCd} />
     </div>
   );

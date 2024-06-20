@@ -9,7 +9,7 @@ function PostModal() {
   const [content, setContent] = useState('');
   const [imgSrc, setImgSrc] = useState('');
   const [imageFile, setImageFile] = useState(null);
-  // 닉네임, 이미지, 리뷰 내용
+
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
