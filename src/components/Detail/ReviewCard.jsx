@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import LikeBtn from './LikeBtn';
 
-function ReviewCard({ review }) {
+function ReviewCard({ review, onClick }) {
   const { id, created_at, content, image_url, nickname, likes, dataCd } = review;
-  console.log(likes);
+
   return (
     <>
-      <StCardDiv>
+      <StCardDiv onClick={onClick}>
         <StUserBox>
           <StUserAvatar />
           <div>

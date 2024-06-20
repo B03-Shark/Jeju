@@ -65,7 +65,8 @@ function LikeBtn({ likes, review_id, dataCd }) {
   return (
     <StLikeBtn
       $islike={isLike}
-      onClick={() => {
+      onClick={(event) => {
+        event.stopPropagation();
         if (!user_id) {
           return alert('로그인이 필요한 기능입니다.');
         }

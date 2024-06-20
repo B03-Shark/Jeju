@@ -7,4 +7,14 @@ const getReviewlist = async ({ queryKey }) => {
   return data;
 };
 
-export { getReviewlist };
+const updateReview = async ({ id, content }) => {
+  const { error } = await supabase.from('reviews').update({ content }).eq('id', id);
+  if (error) throw new Error(error.message);
+};
+
+const deleteReview = async ({ id }) => {
+  const { error } = await supabase.from('reviews').delete().eq('id', id);
+  if (error) throw new Error(error.message);
+};
+
+export { getReviewlist, updateReview, deleteReview };
