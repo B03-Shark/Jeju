@@ -6,13 +6,13 @@ function Checkbox({ children, name, handler, checked = false, handleChange }) {
 
   const onChangeHandler = (e) => {
     setIsChecked(e.target.checked);
-    handler(e)
+    handler(e);
     if (handleChange) {
       handleChange(e);
     }
   };
   return (
-    <label>
+    <StLabel>
       <StCheckBoxInput
         type="checkbox"
         checked={isChecked}
@@ -21,10 +21,13 @@ function Checkbox({ children, name, handler, checked = false, handleChange }) {
         onChange={(e) => onChangeHandler(e)}
       />
       {children}
-    </label>
+    </StLabel>
   );
 }
 
 export default Checkbox;
 
+const StLabel = styled.label`
+  cursor: pointer;
+`;
 const StCheckBoxInput = styled.input``;
