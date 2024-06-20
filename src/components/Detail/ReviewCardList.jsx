@@ -6,7 +6,7 @@ import ReviewCard from './ReviewCard';
 import ReviewModal from '../Modal/ReviewModal';
 
 function ReviewCardList({ dataCd }) {
-  const [selectedReview, setSelectedReview] = useState(null);
+  const [selectedReviewId, setSelectedReviewId] = useState(null);
 
   const {
     data: reviewList,
@@ -26,20 +26,20 @@ function ReviewCardList({ dataCd }) {
   }
 
   const handleItemClick = (review) => {
-    setSelectedReview(review);
+    setSelectedReviewId(review);
   };
 
   const handleCloseModal = () => {
-    setSelectedReview(null);
+    setSelectedReviewId(null);
   };
 
   return (
     <>
       {reviewList.map((review) => {
-        return <ReviewCard key={review.id} data={review} onClick={() => handleItemClick(review)} />;
+        return <ReviewCard key={review.id} data={review} onClick={() => handleItemClick(review.id)} />;
       })}
 
-      {selectedReview && <ReviewModal review={selectedReview} onClose={handleCloseModal} />}
+      {selectedReviewId && <ReviewModal reviewId={selectedReviewId} onClose={handleCloseModal} />}
     </>
   );
 }
