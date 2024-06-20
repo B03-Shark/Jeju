@@ -27,7 +27,7 @@ export default Home;
 const StWrapper = styled.main`
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 45px;
   max-width: 1800px;
   margin-bottom: 36px;
 `;

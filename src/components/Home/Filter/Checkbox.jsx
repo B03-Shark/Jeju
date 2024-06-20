@@ -30,4 +30,6 @@ export default Checkbox;
 const StLabel = styled.label`
   cursor: pointer;
 `;
-const StCheckBoxInput = styled.input``;
+const StCheckBoxInput = styled.input`
+  accent-color: #ffba59;
+`;
