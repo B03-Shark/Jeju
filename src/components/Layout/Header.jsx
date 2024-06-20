@@ -33,9 +33,6 @@ function Header() {
       navigate('/login');
     }
   };
-
-  console.log(isLoggedin);
-
   return (
     <StHeader>
       <StLeftWrap>
