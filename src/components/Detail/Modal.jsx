@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { getUser } from '../Auth/auth';
 
 function Modal({ setModalDisplay, children }) {
+  const user = getUser();
   const handleModal = () => {
     setModalDisplay((prev) => !prev);
   };
@@ -9,7 +11,7 @@ function Modal({ setModalDisplay, children }) {
     <StModal>
       <StUserBox>
         <StUserAvatar src={''} />
-        <StUserName>{'닉네임'}</StUserName>
+        <StUserName>{user.nickname}</StUserName>
       </StUserBox>
       <div>{children}</div>
       <StExitBtn onClick={handleModal}>X</StExitBtn>

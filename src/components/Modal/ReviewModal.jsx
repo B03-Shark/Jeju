@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { deleteReview, updateReview, getReview } from '../../api/review.api';
 import ModalBase from './ModalBase';
 import defaultImg from '../../assets/default-image.png';
+import { getUser } from '../Auth/auth';
 
 function ReviewModal({ review, onClose }) {
   const queryClient = useQueryClient();
@@ -62,6 +62,10 @@ function ReviewModal({ review, onClose }) {
     setEditedReview((prev) => ({ ...prev, content: e.target.value }));
   };
 
+  const user = getUser();
+
+  const isShowEditing = review.user_id == user.id;
+
   return (
     <ModalBase isOpen={true} onClose={onClose}>
       <h2>{review.nickname}</h2>
@@ -102,8 +106,10 @@ function ReviewModal({ review, onClose }) {
           <p>{data?.content}</p>
         </div>
       )}
-      <button onClick={() => deleteMutation.mutate({ reviewId: review.id })}>삭제</button>
-      {isEditing ? (
+      {isShowEditing && !isEditing && (
+        <button onClick={() => deleteMutation.mutate({ reviewId: review.id })}>삭제</button>
+      )}
+      {isEditing && (
         <button
           onClick={() =>
             updateMutation.mutate({
@@ -115,9 +121,8 @@ function ReviewModal({ review, onClose }) {
         >
           저장
         </button>
-      ) : (
-        <button onClick={() => setIsEditing(true)}>수정</button>
       )}
+      {isShowEditing && !isEditing && <button onClick={() => setIsEditing(true)}>수정</button>}
     </ModalBase>
   );
 }
