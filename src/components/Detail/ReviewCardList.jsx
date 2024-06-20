@@ -17,6 +17,7 @@ function ReviewCardList({ dataCd }) {
     queryFn: getReviewlist
   });
 
+  console.log(reviewList);
   if (isPending) {
     return <div>리뷰 리스트를 로딩중입니다...</div>;
   }

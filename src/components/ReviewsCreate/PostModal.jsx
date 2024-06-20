@@ -1,31 +1,34 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { uploadImage } from '../../api/image.api';
 import { addReview } from '../../api/review.api';
+import { useParams } from 'react-router-dom';
+import { getUser } from '../Auth/auth';
 
-function PostModal() {
+function PostModal({ handleModal }) {
   const [content, setContent] = useState('');
   const [imgSrc, setImgSrc] = useState('');
   const [imageFile, setImageFile] = useState(null);
-
+  const { id: dataCd } = useParams();
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
 
   const { mutate } = useMutation({
     mutationFn: addReview,
     onSuccess: () => {
       queryClient.invalidateQueries(['reviewList']);
-      navigate('/');
+      handleModal();
     }
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const user = getUser();
     const path = await uploadImage(imageFile);
     const newReview = {
+      nickname: user.nickname,
+      user_id: user.id,
+      dataCd,
       content,
       image_url: `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/images/${path}`
     };
@@ -47,7 +50,7 @@ function PostModal() {
         <StImageUpload type="file" id="image" accept="image/*" onChange={handleImageChange} />
         <StReviewsContent type="text" value={content} onChange={(e) => setContent(e.target.value)}></StReviewsContent>
         <StReviewsSave type="submit">작성</StReviewsSave>
-        <StReviewsCancel>돌아가기</StReviewsCancel>
+        <StReviewsCancel onClick={handleModal}>돌아가기</StReviewsCancel>
       </StForm>
     </StModal>
   );

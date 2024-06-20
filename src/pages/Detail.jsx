@@ -7,13 +7,14 @@ import PostModal from '../components/ReviewsCreate/PostModal';
 import useJejuStore from '../hooks/useJejuStore';
 import SelectedStoreMap from '../components/Detail/SelectedStoreMap';
 import SelectedStoredata from '../components/Detail/SelectedStoredata';
+import { getUser } from '../components/Auth/auth';
 
 function Detail() {
   const [modalDisplay, setModalDisplay] = useState(false);
   const { id: dataCd } = useParams();
   const { jejuStores, isPending, isError } = useJejuStore();
   const [selectedStoreData, setSelectedStoreData] = useState(null);
-
+  const user = getUser();
   useEffect(() => {
     if (jejuStores && dataCd) {
       const selectedStore = jejuStores.item.find((store) => store.dataCd === dataCd);
@@ -22,6 +23,9 @@ function Detail() {
   }, [jejuStores, dataCd]);
 
   const handleModal = () => {
+    if (!user) {
+      return alert('로그인이 필요합니다.');
+    }
     setModalDisplay((prev) => !prev);
   };
 
@@ -48,7 +52,7 @@ function Detail() {
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
       {modalDisplay ? (
         <Modal setModalDisplay={setModalDisplay}>
-          <PostModal />
+          <PostModal handleModal={handleModal} />
         </Modal>
       ) : (
         ''
