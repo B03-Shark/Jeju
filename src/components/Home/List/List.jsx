@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useSearch } from '../../../context/SearchWordContext';
 
 function List({ jejuStores, searchWord }) {
   const navigate = useNavigate();

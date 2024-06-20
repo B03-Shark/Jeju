@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import search from '../../assets/search.png';
 import store from '../../assets/store.png';
 import styled from 'styled-components';
-import { useSearch } from '../../context/SearchWordContext';
+import useSearch from '../../hooks/useSearch';
 
 function Header() {
   const navigate = useNavigate();
