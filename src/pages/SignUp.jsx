@@ -36,8 +36,8 @@ function SignUp() {
 
   return (
     <div style={{ backgroundColor: '#f8f9fa', height: '100vh' }}>
-      <StContainer>
-        <div className="inner">
+      <div className="inner">
+        <StContainer>
           <h3>회원가입</h3>
           <StInputGroup>
             <StInputWrapper>
@@ -75,10 +75,12 @@ function SignUp() {
           >
             회원가입
           </StButton>
-          <p onClick={() => navigate('/login')}>이미 계정을 가지고 계신가요?</p>
-          <p onClick={() => navigate('/')}>홈으로</p>
-        </div>
-      </StContainer>
+          <StPWrapper>
+            <p onClick={() => navigate('/login')}>이미 계정을 가지고 계신가요?</p>
+            <p onClick={() => navigate('/')}>홈으로</p>
+          </StPWrapper>
+        </StContainer>
+      </div>
     </div>
   );
 }
@@ -89,12 +91,13 @@ const StContainer = styled.div`
   background-color: white;
   position: fixed;
   right: 0;
-  width: 65vw;
+  width: 60vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   .inner {
     display: flex;
     flex-direction: column;
@@ -103,62 +106,79 @@ const StContainer = styled.div`
 
   h3 {
     font-weight: bold;
-    font-size: 22px;
-  }
-
-  p:hover {
-    cursor: pointer;
-    color: #f9ed32;
+    font-size: 20px;
+    margin-bottom: 50px;
   }
 `;
 
 const StInputGroup = styled.div`
   margin-bottom: 15px;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+`;
+
+const StInputWrapper = styled.div`
+  width: 100%;
+  height: 100%;
   label {
     display: block;
-    margin-bottom: 5px;
-    color: #adb1b6;
+    margin-bottom: 4px;
+    color: #7c838a;
     font-size: 1rem;
   }
 
   input {
-    width: 100%;
+    width: 96%;
     color: #adb1b6;
-    padding: 12px;
+    padding: 16px;
     box-sizing: border-box;
     background-color: #dfe3e7;
-    border: 0;
-    border-radius: 8px;
-  }
-
-  input:focus {
-    /*
-    background-color: white;
-    border: medium;
-    border-color: #80befc;
-    outline: none;
-    */
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
   }
 
   input:hover {
     cursor: pointer;
   }
-`;
 
-const StInputWrapper = styled.div`
-  margin: 10px;
+  input:focus {
+    /*
+    border-color: #80befc;
+    outline: none;
+    background-color: white;
+    border: medium;
+    */
+  }
 `;
 
 const StButton = styled.button`
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 8px 100px;
+  background-color: #007dfa;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 18px;
+`;
 
-  &:disabled {
-    background-color: #a0a0a0;
+const StPWrapper = styled.div`
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  p {
+    color: #7c838a;
+    font-size: 14px;
+  }
+
+  p:hover {
+    cursor: pointer;
+    color: #f9ed32;
   }
 `;
