@@ -38,8 +38,13 @@ function Detail() {
   }
   return (
     <div>
-      <SelectedStoreMap dataCd={dataCd} />
-      <SelectedStoredata selectedStoreData={selectedStoreData} />
+      <StStoreDataWrapper>
+        {selectedStoreData && <SelectedStoreMap store={selectedStoreData} />}
+        <StStoreDataRight>
+          <SelectedStoredata selectedStoreData={selectedStoreData} />
+          <StReviewButton onClick={handleModal}>리뷰 작성하기</StReviewButton>
+        </StStoreDataRight>
+      </StStoreDataWrapper>
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
       {modalDisplay ? (
         <Modal setModalDisplay={setModalDisplay}>
@@ -49,10 +54,11 @@ function Detail() {
         ''
       )}
       <ReviewCardList dataCd={dataCd} />
-      <button onClick={handleModal}>모달 버튼</button>
     </div>
   );
 }
+
+export default Detail;
 
 const StModalWrapper = styled.div`
   position: fixed;
@@ -71,4 +77,23 @@ const StModalWrapper = styled.div`
     }
   }
 `;
-export default Detail;
+
+const StStoreDataWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+`;
+
+const StStoreDataRight = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+`;
+
+const StReviewButton = styled.button`
+  width: 150px;
+`;

@@ -19,7 +19,6 @@ function SelectedStoredata({ selectedStoreData }) {
           <StDataLabel>주소</StDataLabel>
           <p>{selectedStoreData.rnAdres}</p>
         </StDataWrapper>
-        <StReviewButton> 리뷰작성하기 </StReviewButton>
       </StStoreDataWrapper>
     </>
   );
@@ -30,14 +29,14 @@ export default SelectedStoredata;
 const StStoreDataWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid;
   align-items: center;
-  width: 30rem;
+  width: 500px;
   gap: 2rem;
   padding: 15px 0;
 
   & > h2 {
     font-size: 2rem;
+    font-weight: 700;
   }
 `;
 
@@ -50,8 +49,4 @@ const StDataWrapper = styled.div`
 const StDataLabel = styled.p`
   font-weight: bold;
   margin-right: 16px;
-`;
-
-const StReviewButton = styled.button`
-  background-color: beige;
 `;
