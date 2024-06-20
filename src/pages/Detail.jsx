@@ -26,11 +26,11 @@ function Detail() {
 
   return (
     <div>
+      <Storedata />
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
       {modalDisplay ? <Modal setModalDisplay={setModalDisplay} /> : ''}
       <ReviewCardList dataCd={dataCd} />
       <button onClick={handleModal}>모달 버튼</button>
-      <Storedata />
 
       <br></br>
       <br></br>
