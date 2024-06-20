@@ -6,12 +6,11 @@ import useJejuStore from '../hooks/useJejuStore';
 
 function Home() {
   const { jejuStores } = useJejuStore();
-  console.log(jejuStores);
   return (
     <>
       <StWrapper>
-        <Filter jejuStores={jejuStores} />
-        <StoresMap jejuStores={jejuStores} />
+        <Filter/>
+        <StoresMap />
       </StWrapper>
       <StBottomWrapper>
         <List jejuStores={jejuStores} />

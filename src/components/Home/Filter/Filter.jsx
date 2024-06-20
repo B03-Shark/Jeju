@@ -1,44 +1,88 @@
 import styled from 'styled-components';
 import { useShallow } from 'zustand/react/shallow';
-import useCheckBox from '../../../hooks/useCheckBox';
-import useFilteredJejuStore from '../../../zustand/filteredjeju.store';
+import useFilterStore from '../../../zustand/filter.store';
 import Checkbox from './Checkbox';
 
 function Filter() {
-  const { filteredJejuStores } = useFilteredJejuStore(
+  const handleChange = (e) => {
+    const checkboxes = document.getElementsByName('price');
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i] !== e.target) {
+        checkboxes[i].checked = false;
+      }
+    }
+  };
+
+  const { addPriceFilter, delPriceFilter, setPriceFilter } = useFilterStore(
     useShallow((state) => ({
-      filteredJejuStores: state.filteredJejuStores
+      addPriceFilter: state.addPriceFilter,
+      delPriceFilter: state.delPriceFilter,
+      setPriceFilter: state.setPriceFilter
     }))
   );
-
-  const [handleType] = useCheckBox('indutyNm');
-  const [handlePrice] = useCheckBox();
-
-  console.log(filteredJejuStores);
+  
+  const handleType = ({ target }) => {
+    const newFilter = { property: 'indutyNm', name: target.value };
+    if (target.checked) {
+      delPriceFilter(newFilter);
+    } else {
+      addPriceFilter(newFilter);
+    }
+  };
+  const handlePrice = ({ target }) => {
+    const newFilter = { property: 'priceRange', name: target.value };
+    if (target.checked) {
+      setPriceFilter(newFilter);
+    } else {
+      setPriceFilter({});
+    }
+  };
   return (
     <StMainWrapper>
       <StCategory>
         <StCategoryTitle>지역</StCategoryTitle>
         <StCategoryContent>
-          <Checkbox checked={true}>제주시</Checkbox>
+          <label>
+            <input type="checkbox" checked={true} />
+            제주시
+          </label>
         </StCategoryContent>
       </StCategory>
       <StCategory>
         <StCategoryTitle>업종</StCategoryTitle>
         <StCategoryContent>
-          <Checkbox handleChange={handleType}>한식</Checkbox>
-          <Checkbox handleChange={handleType}>미용실</Checkbox>
-          <Checkbox handleChange={handleType}>세탁업</Checkbox>
-          <Checkbox handleChange={handleType}>숙박업</Checkbox>
-          <Checkbox handleChange={handleType}>기타</Checkbox>
+          <Checkbox checked={true} handler={handleType}>
+            음식점
+          </Checkbox>
+          <Checkbox checked={true} handler={handleType}>
+            미용업
+          </Checkbox>
+          <Checkbox checked={true} handler={handleType}>
+            세탁업
+          </Checkbox>
+          <Checkbox checked={true} handler={handleType}>
+            숙박업
+          </Checkbox>
+          <Checkbox checked={true} handler={handleType}>
+            기타
+          </Checkbox>
         </StCategoryContent>
       </StCategory>
       <StCategory>
         <StCategoryTitle>가격</StCategoryTitle>
         <StCategoryContent>
-          <Checkbox handleChange={handlePrice}>1~2만원</Checkbox>
-          <Checkbox handleChange={handlePrice}>2~4만원</Checkbox>
-          <Checkbox handleChange={handlePrice}>4만원 이상</Checkbox>
+          <Checkbox name="price" handler={handlePrice} handleChange={handleChange}>
+            만원 이하
+          </Checkbox>
+          <Checkbox name="price" handler={handlePrice} handleChange={handleChange}>
+            1~2만원
+          </Checkbox>
+          <Checkbox name="price" handler={handlePrice} handleChange={handleChange}>
+            2~4만원
+          </Checkbox>
+          <Checkbox name="price" handler={handlePrice} handleChange={handleChange}>
+            4만원 이상
+          </Checkbox>
         </StCategoryContent>
       </StCategory>
     </StMainWrapper>

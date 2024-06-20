@@ -19,6 +19,7 @@ function useJejuStore() {
     queryKey: ['jejuStores'],
     queryFn: getJejuStores
   });
+  
   useEffect(() => {
     if (jejuStores) {
       initJejuStores(jejuStores.item);
