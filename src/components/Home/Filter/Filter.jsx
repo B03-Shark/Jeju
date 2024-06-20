@@ -95,10 +95,10 @@ const StMainWrapper = styled.aside`
   display: flex;
   flex-direction: column;
   margin-top: 58px;
-  padding-bottom: 200px;
-  border: 1px solid #ffba59;
+  padding-bottom: 80px;
+  border: 1px solid #ffca80;
   min-width: 150px;
-  height: 100%;
+  height: 50%;
 `;
 
 const StCheckBoxInput = styled.input`
@@ -111,8 +111,9 @@ const StCategory = styled.section`
 const StCategoryTitle = styled.h4`
   font-size: 15px;
   font-weight: 700;
-  background-color: #ffba59;
+  background-color: #ffb752e0;
   padding: 10px;
+  color: #5b5b5b;
 `;
 
 const StCategoryContent = styled.div`
