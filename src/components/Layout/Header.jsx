@@ -3,36 +3,32 @@ import search from '../../assets/search.png';
 import store from '../../assets/store.png';
 import styled from 'styled-components';
 import useSearch from '../../hooks/useSearch';
+import { useRef } from 'react';
 
 function Header() {
   const navigate = useNavigate();
-  const { searchWord, setSearchWord, applySearch } = useSearch();
+  const { applySearch } = useSearch();
+  const searchInputRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const searchWord = searchInputRef.current.value;
     applySearch(searchWord);
+  };
+
+  const handleLogoClick = () => {
+    applySearch('');
+    navigate(`/`);
+    searchInputRef.current.value = '';
   };
 
   return (
     <StHeader>
       <StLeftWrap>
-        <StLogoImg
-          onClick={() => {
-            setSearchWord('');
-            applySearch('');
-            navigate(`/`);
-          }}
-          src={store}
-          alt="logoImg"
-        />
+        <StLogoImg onClick={handleLogoClick} src={store} alt="logoImg" />
       </StLeftWrap>
       <StForm onSubmit={handleSubmit}>
-        <StInput
-          type="text"
-          value={searchWord}
-          onChange={(e) => setSearchWord(e.target.value)}
-          placeholder="상호명을 검색해보세요."
-        />
+        <StInput type="text" ref={searchInputRef} placeholder="상호명을 검색해보세요." />
         <StButton type="submit">
           <StSearchImg src={search} alt="searchImg" />
         </StButton>
