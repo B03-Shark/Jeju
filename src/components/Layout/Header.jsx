@@ -1,14 +1,16 @@
 import { useNavigate } from 'react-router-dom';
-import search from '../../assets/search.png';
 import store from '../../assets/store.png';
 import styled from 'styled-components';
 import useSearch from '../../hooks/useSearch';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { signOut } from '../Auth/auth';
 
 function Header() {
   const navigate = useNavigate();
   const { applySearch } = useSearch();
   const searchInputRef = useRef();
+
+  const [isLoggedin, setIsLoggedin] = useState(JSON.parse(localStorage.getItem('isLoggedin')));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,17 +24,27 @@ function Header() {
     searchInputRef.current.value = '';
   };
 
+  const handleLogInOut = () => {
+    if (isLoggedin) {
+      signOut();
+      setIsLoggedin(false);
+    } else {
+      setIsLoggedin(localStorage.getItem('isLoggedin'));
+      navigate('/login');
+    }
+  };
+
+  console.log(isLoggedin);
+
   return (
     <StHeader>
       <StLeftWrap>
         <StLogoImg onClick={handleLogoClick} src={store} alt="logoImg" />
       </StLeftWrap>
-      <StForm onSubmit={handleSubmit}>
-        <StInput type="text" ref={searchInputRef} placeholder="상호명을 검색해보세요." />
-        <StButton type="submit">
-          <StSearchImg src={search} alt="searchImg" />
-        </StButton>
-      </StForm>
+      <StRigthWrap>
+        {isLoggedin && <div>{JSON.parse(localStorage.getItem('user')).nickname}</div>}
+        <StButton onClick={() => handleLogInOut()}>{isLoggedin ? '로그아웃' : '로그인'}</StButton>
+      </StRigthWrap>
     </StHeader>
   );
 }
@@ -81,4 +93,9 @@ const StLogoImg = styled.img`
 const StInput = styled.input`
   width: 15rem;
   height: 2rem;
+`;
+
+const StRigthWrap = styled.div`
+  display: flex;
+  gap: 10px;
 `;
