@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { deleteReview, updateReview, getReview } from '../../api/review.api';
 import ModalBase from './ModalBase';
+import defaultImg from '../../assets/default-image.png';
 
 function ReviewModal({ review, onClose }) {
   const queryClient = useQueryClient();
@@ -93,7 +94,7 @@ function ReviewModal({ review, onClose }) {
               border: '1px solid #ccc',
               borderRadius: 8,
               cursor: 'pointer',
-              backgroundImage: `url(${data?.image_url ? data.image_url : '비어있는이미지 '})`,
+              backgroundImage: `url(${data?.image_url ? data.image_url : defaultImg})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
@@ -101,7 +102,7 @@ function ReviewModal({ review, onClose }) {
           <p>{data?.content}</p>
         </div>
       )}
-      <button onClick={() => deleteMutation.mutate({ reviewId })}>삭제</button>
+      <button onClick={() => deleteMutation.mutate({ reviewId: review.id })}>삭제</button>
       {isEditing ? (
         <button
           onClick={() =>
