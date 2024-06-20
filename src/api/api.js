@@ -6,10 +6,10 @@ const jejuStoreEncodingKey = import.meta.env.VITE_API_JEJU_STORE_ENCODING_KEY;
 
 export const jejuStoreAPIDecoding = axios.create({
   baseURL: jejuStoreUrl,
-  params: { serviceKey: jejuStoreDecodingKey }
+  params: { serviceKey: jejuStoreDecodingKey, numOfRows: 11630, pageNo: 2 }
 });
 
 export const jejuStoreAPIEncoding = axios.create({
   baseURL: jejuStoreUrl,
-  params: { serviceKey: jejuStoreEncodingKey }
+  params: { serviceKey: jejuStoreEncodingKey, numOfRows: 11630, pageNo: 2 }
 });

@@ -12,8 +12,8 @@ function Home() {
   return (
     <>
       <StWrapper>
-        <Filter jejuStores={jejuStores} />
-        <StoresMap jejuStores={jejuStores} />
+        <Filter/>
+        <StoresMap />
       </StWrapper>
       <StBottomWrapper>
         <List jejuStores={jejuStores} searchWord={appliedSearchWord} />
@@ -27,6 +27,7 @@ export default Home;
 const StWrapper = styled.div`
   display: flex;
   justify-content: center;
+  gap: 15px;
   max-width: 1800px;
 `;
 
