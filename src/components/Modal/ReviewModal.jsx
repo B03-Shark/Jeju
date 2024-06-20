@@ -4,14 +4,14 @@ import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { deleteReview, updateReview, getReview } from '../../api/review.api';
 import ModalBase from './ModalBase';
 
-function ReviewModal({ reviewId, onClose }) {
+function ReviewModal({ review, onClose }) {
   const queryClient = useQueryClient();
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editedReview, setEditedReview] = useState({ content: '', image_url: '' });
+  const [editedReview, setEditedReview] = useState({ content: '', image_url: '', nickname: '' });
 
   const { data, isLoading } = useQuery({
-    queryKey: ['review', reviewId],
+    queryKey: ['review', review.id],
     queryFn: getReview,
     onSuccess: (data) => {
       setEditedReview(data);
@@ -27,7 +27,7 @@ function ReviewModal({ reviewId, onClose }) {
   const updateMutation = useMutation({
     mutationFn: updateReview,
     onSuccess: () => {
-      queryClient.setQueryData(['review', reviewId], (oldData) => {
+      queryClient.setQueryData(['review', review.dataCd], (oldData) => {
         return { ...oldData, ...editedReview };
       });
       queryClient.invalidateQueries(['reviewList']);
@@ -63,7 +63,8 @@ function ReviewModal({ reviewId, onClose }) {
 
   return (
     <ModalBase isOpen={true} onClose={onClose}>
-      <h2>Review Details</h2>
+      <h2>{review.nickname}</h2>
+      <h2>{review.created_at}</h2>
       {isLoading ? (
         <div>IsLoading...</div>
       ) : isEditing ? (
@@ -104,7 +105,11 @@ function ReviewModal({ reviewId, onClose }) {
       {isEditing ? (
         <button
           onClick={() =>
-            updateMutation.mutate({ reviewId, content: editedReview.content, image_url: editedReview.image_url })
+            updateMutation.mutate({
+              reviewId: editedReview.id,
+              content: editedReview.content,
+              image_url: editedReview.image_url
+            })
           }
         >
           저장

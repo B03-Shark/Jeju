@@ -6,7 +6,7 @@ import ReviewCard from './ReviewCard';
 import ReviewModal from '../Modal/ReviewModal';
 
 function ReviewCardList({ dataCd }) {
-  const [selectedReviewId, setSelectedReviewId] = useState(null);
+  const [selectedReview, setSelectedReview] = useState(null);
 
   const {
     data: reviewList,
@@ -26,11 +26,11 @@ function ReviewCardList({ dataCd }) {
   }
 
   const handleItemClick = (review) => {
-    setSelectedReviewId(review);
+    setSelectedReview(review);
   };
 
   const handleCloseModal = () => {
-    setSelectedReviewId(null);
+    setSelectedReview(null);
   };
 
   return (
