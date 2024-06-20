@@ -10,7 +10,7 @@ function StoresMap() {
       jejuStores: state.jejuStores
     }))
   );
-  const [filteredStore, setFilteredStore] = useState(jejuStores);
+  const [filteredStores, setFilteredStores] = useState(jejuStores);
 
   const { typeFilters, priceFilter } = useFilterStore(
     useShallow((state) => ({
@@ -20,17 +20,16 @@ function StoresMap() {
   );
 
   useEffect(() => {
-    console.log(jejuStores);
-    setFilteredStore(jejuStores);
+    setFilteredStores(jejuStores);
     if (typeFilters.length > 0) {
       typeFilters.forEach((typeFilter) => {
-        setFilteredStore((prevStore) => {
+        setFilteredStores((prevStore) => {
           return prevStore.filter((prevStore) => prevStore[typeFilter.property] !== typeFilter.name);
         });
       });
     }
     if (Object.keys(priceFilter).length > 0) {
-      setFilteredStore((prevStore) => prevStore.filter((store) => store[priceFilter.property] === priceFilter.name));
+      setFilteredStores((prevStore) => prevStore.filter((store) => store[priceFilter.property] === priceFilter.name));
     }
   }, [jejuStores, typeFilters, priceFilter]);
 
@@ -45,8 +44,8 @@ function StoresMap() {
         }}
       >
         <MarkerClusterer>
-          {filteredStore &&
-            filteredStore.map((jejuStoreItem) => (
+          {filteredStores &&
+            filteredStores.map((jejuStoreItem) => (
               <MapMarker
                 style={{ border: 'tranparent' }}
                 position={{ lat: jejuStoreItem.laCrdnt, lng: jejuStoreItem.loCrdnt }}

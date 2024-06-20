@@ -3,7 +3,7 @@ import { create } from 'zustand';
 const useFilteredJejuStore = create((set) => ({
   jejuStores: [],
   initJejuStores: (stores) => {
-    const newStores = stores.filter((store) => store.laCrdnt && store.loCrdnt);
+    const newStores = stores.filter((store) => store.laCrdnt && store.loCrdnt && store.laCrdnt < 33.7);
     const changedStores = newStores.map((store) => {
       const strArr = store.prdlstCn.split(' ');
       const regex = /[^0-9]/g;
@@ -43,7 +43,7 @@ const useFilteredJejuStore = create((set) => ({
     });
 
     set({ jejuStores: changedStores });
-  },
+  }
 }));
 
 export default useFilteredJejuStore;
