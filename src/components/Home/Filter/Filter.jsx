@@ -94,9 +94,9 @@ export default Filter;
 const StMainWrapper = styled.aside`
   display: flex;
   flex-direction: column;
-
-  background-color: #ffc1634a;
+  border: 1px solid #cfcfcf;
   width: 150px;
+  height: 100%;
 `;
 
 const StCategory = styled.section`
@@ -104,12 +104,15 @@ const StCategory = styled.section`
 `;
 
 const StCategoryTitle = styled.h4`
-  background-color: gray;
-  padding-left: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #cfcfcf;
+  padding: 10px;
 `;
 
 const StCategoryContent = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  gap: 10px;
+  margin: 10px 20px;
 `;
