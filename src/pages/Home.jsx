@@ -3,18 +3,20 @@ import Filter from '../components/Home/Filter/Filter';
 import List from '../components/Home/List/List';
 import StoresMap from '../components/Home/StoresMap';
 import useJejuStore from '../hooks/useJejuStore';
+import useSearch from '../hooks/useSearch';
 
 function Home() {
   const { jejuStores } = useJejuStore();
-  console.log(jejuStores);
+  const { appliedSearchWord } = useSearch();
+
   return (
     <>
       <StWrapper>
-        <Filter jejuStores={jejuStores} />
-        <StoresMap jejuStores={jejuStores} />
+        <Filter />
+        <StoresMap />
       </StWrapper>
       <StBottomWrapper>
-        <List jejuStores={jejuStores} />
+        <List jejuStores={jejuStores} searchWord={appliedSearchWord} />
       </StBottomWrapper>
     </>
   );
@@ -25,7 +27,9 @@ export default Home;
 const StWrapper = styled.div`
   display: flex;
   justify-content: center;
+  gap: 15px;
   max-width: 1800px;
+  margin-bottom: 36px;
 `;
 
 const StBottomWrapper = styled.div`
