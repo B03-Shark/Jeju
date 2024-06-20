@@ -36,12 +36,13 @@ function StoresMap() {
   return (
     <div>
       <Map
-        center={{ lat: 33.4842414211083, lng: 126.480910986984 }}
         style={{
-          width: '600px',
+          width: '700px',
           height: '500px',
-          borderRadius: '20px'
+          borderRadius: '5px'
         }}
+        center={{ lat: 33.471151572491, lng: 126.495627680889 }}
+        level={9}
       >
         <MarkerClusterer>
           {filteredStores &&

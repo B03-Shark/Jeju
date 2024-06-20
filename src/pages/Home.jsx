@@ -27,6 +27,7 @@ export default Home;
 const StWrapper = styled.div`
   display: flex;
   justify-content: center;
+  gap: 15px;
   max-width: 1800px;
 `;
 

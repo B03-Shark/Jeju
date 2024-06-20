@@ -20,7 +20,7 @@ function Filter() {
       setPriceFilter: state.setPriceFilter
     }))
   );
-  
+
   const handleType = ({ target }) => {
     const newFilter = { property: 'indutyNm', name: target.value };
     if (target.checked) {
@@ -91,13 +91,25 @@ function Filter() {
 
 export default Filter;
 
-const StMainWrapper = styled.aside``;
+const StMainWrapper = styled.aside`
+  display: flex;
+  flex-direction: column;
 
-const StCategory = styled.section``;
+  background-color: #ffc1634a;
+  width: 150px;
+`;
 
-const StCategoryTitle = styled.h5``;
+const StCategory = styled.section`
+  width: 100%;
+`;
+
+const StCategoryTitle = styled.h4`
+  background-color: gray;
+  padding-left: 10px;
+`;
 
 const StCategoryContent = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 20px;
 `;
