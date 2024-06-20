@@ -94,8 +94,9 @@ export default Filter;
 const StMainWrapper = styled.aside`
   display: flex;
   flex-direction: column;
+  margin-top: 58px;
   border: 1px solid #cfcfcf;
-  width: 150px;
+  min-width: 150px;
   height: 100%;
 `;
 

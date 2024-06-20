@@ -10,29 +10,31 @@ function Home() {
 
   return (
     <>
-      <SearchForm/>
       <StWrapper>
         <Filter />
-        <StoresMap />
+        <StMainWrapper>
+          <SearchForm />
+          <StoresMap />
+          <List />
+        </StMainWrapper>
       </StWrapper>
-      <StBottomWrapper>
-        <List />
-      </StBottomWrapper>
     </>
   );
 }
 
 export default Home;
 
-const StWrapper = styled.div`
+const StWrapper = styled.main`
   display: flex;
   justify-content: center;
   gap: 15px;
   max-width: 1800px;
 `;
 
-const StBottomWrapper = styled.div`
+const StMainWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 `;

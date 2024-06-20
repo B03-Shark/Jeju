@@ -6,7 +6,7 @@ import useFilterStore from '../../../zustand/filter.store';
 import useFilteredJejuStore from '../../../zustand/filteredjeju.store';
 
 function StoresMap() {
-    const { appliedSearchWord: searchWord } = useSearch();
+  const { appliedSearchWord: searchWord } = useSearch();
   const { jejuStores } = useFilteredJejuStore(
     useShallow((state) => ({
       jejuStores: state.jejuStores
@@ -40,7 +40,7 @@ function StoresMap() {
     <div>
       <Map
         style={{
-          width: '700px',
+          width: '900px',
           height: '500px',
           borderRadius: '5px'
         }}
