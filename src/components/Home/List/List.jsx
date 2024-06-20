@@ -2,16 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-function List({ jejuStores }) {
+function List({ jejuStores, searchWord }) {
   const navigate = useNavigate();
 
   if (!jejuStores || jejuStores.item.length === 0) {
     return <div>데이터가 없습니다.</div>;
   }
 
+  const filteredStores = jejuStores.item.filter((store) => store.bsshNm.includes(searchWord));
+
   return (
     <StListWrapper>
-      {jejuStores.item.map((store, index) => (
+      {filteredStores.map((store, index) => (
         <StStoreItem
           key={index}
           onClick={() => {
