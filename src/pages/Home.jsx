@@ -12,7 +12,7 @@ function Home() {
   return (
     <>
       <StWrapper>
-        <Filter/>
+        <Filter />
         <StoresMap />
       </StWrapper>
       <StBottomWrapper>
@@ -29,6 +29,7 @@ const StWrapper = styled.div`
   justify-content: center;
   gap: 15px;
   max-width: 1800px;
+  margin-bottom: 36px;
 `;
 
 const StBottomWrapper = styled.div`
