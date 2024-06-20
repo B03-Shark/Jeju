@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Map, MapMarker, MarkerClusterer } from 'react-kakao-maps-sdk';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useShallow } from 'zustand/react/shallow';
+import useSearch from '../../../hooks/useSearch';
 import useFilterStore from '../../../zustand/filter.store';
 import useFilteredJejuStore from '../../../zustand/filteredjeju.store';
+import { setImg } from './functions';
 
 function StoresMap() {
+  const { appliedSearchWord: searchWord } = useSearch();
   const { jejuStores } = useFilteredJejuStore(
     useShallow((state) => ({
       jejuStores: state.jejuStores
@@ -33,29 +36,32 @@ function StoresMap() {
     }
   }, [jejuStores, typeFilters, priceFilter]);
 
+  const searchedStores = filteredStores.filter((store) => store.bsshNm.includes(searchWord));
   return (
     <div>
       <Map
         style={{
-          width: '700px',
+          width: '900px',
           height: '500px',
           borderRadius: '5px'
         }}
         center={{ lat: 33.471151572491, lng: 126.495627680889 }}
         level={9}
       >
-        <MarkerClusterer>
-          {filteredStores &&
-            filteredStores.map((jejuStoreItem) => (
-              <MapMarker
-                style={{ border: 'tranparent' }}
-                position={{ lat: jejuStoreItem.laCrdnt, lng: jejuStoreItem.loCrdnt }}
-                key={jejuStoreItem.dataCd}
-              >
-                <div>{jejuStoreItem.bsshNm}</div>
-              </MapMarker>
-            ))}
-        </MarkerClusterer>
+        {searchedStores &&
+          searchedStores.map((jejuStoreItem) => (
+            <MapMarker
+              image={{
+                src: setImg(jejuStoreItem.indutyNm),
+                size: { width: 43, height: 43 },
+                options: { offset: { x: 13, y: 15 }}
+              }}
+              position={{ lat: jejuStoreItem.laCrdnt, lng: jejuStoreItem.loCrdnt }}
+              key={jejuStoreItem.dataCd}
+              title={jejuStoreItem.bsshNm}
+            >
+            </MapMarker>
+          ))}
       </Map>
     </div>
   );

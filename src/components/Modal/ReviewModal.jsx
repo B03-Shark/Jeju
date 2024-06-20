@@ -1,9 +1,9 @@
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
-import { deleteReview, updateReview, getReview } from '../../api/review.api';
-import ModalBase from './ModalBase';
+import { deleteReview, getReview, updateReview } from '../../api/review.api';
 import defaultImg from '../../assets/default-image.png';
 import { getUser } from '../Auth/auth';
+import ModalBase from './ModalBase';
 
 function ReviewModal({ review, onClose }) {
   const queryClient = useQueryClient();

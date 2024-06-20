@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useShallow } from 'zustand/react/shallow';
+import useSearch from '../../../hooks/useSearch';
 import useFilterStore from '../../../zustand/filter.store';
 import useFilteredJejuStore from '../../../zustand/filteredjeju.store';
 
-function List({ searchWord }) {
+function List() {
   const navigate = useNavigate();
+  const { appliedSearchWord: searchWord } = useSearch();
+
   const { jejuStores } = useFilteredJejuStore(
     useShallow((state) => ({
       jejuStores: state.jejuStores
