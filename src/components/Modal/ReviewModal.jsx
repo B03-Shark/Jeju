@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { deleteReview, updateReview, getReview } from '../../api/review.api';
 import ModalBase from './ModalBase';

@@ -64,3 +64,9 @@ export const signOut = async () => {
     localStorage.setItem('isLoggedin', false);
   }
 };
+
+// 아이디, 닉네임 불러오는 값 추가
+export const getUser = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  return user;
+};
