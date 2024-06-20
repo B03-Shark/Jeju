@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <GlobalStyle/>
+        <GlobalStyle />
         <Router />
       </QueryClientProvider>
     </>
