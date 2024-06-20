@@ -1,29 +1,6 @@
-// Storedata.jsx
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import useJejuStore from '../../hooks/useJejuStore';
 import styled from 'styled-components';
 
-function Storedata() {
-  const { id } = useParams();
-  const { jejuStores, isPending, isError } = useJejuStore();
-  const [selectedStoreData, setSelectedStoreData] = useState(null);
-
-  useEffect(() => {
-    if (jejuStores && id) {
-      const selectedStore = jejuStores.item.find((store) => store.dataCd === id);
-      setSelectedStoreData(selectedStore);
-    }
-  }, [jejuStores, id]);
-
-  if (isPending) {
-    return <div>Loading</div>;
-  }
-
-  if (isError) {
-    return <div>데이터 가져오는중에 에러 발생</div>;
-  }
-
+function SelectedStoredata({ selectedStoreData }) {
   if (!selectedStoreData) {
     return <div>데이터 없음</div>;
   }
@@ -48,7 +25,7 @@ function Storedata() {
   );
 }
 
-export default Storedata;
+export default SelectedStoredata;
 
 const StStoreDataWrapper = styled.div`
   display: flex;
