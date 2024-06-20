@@ -7,14 +7,21 @@ const getReviewlist = async ({ queryKey }) => {
   return data;
 };
 
-const updateReview = async ({ id, content }) => {
-  const { error } = await supabase.from('reviews').update({ content }).eq('id', id);
+const getReview = async ({ queryKey }) => {
+  const [, reviewId] = queryKey;
+  let { data, error } = await supabase.from('reviews').select().eq('id', reviewId).single();
+  if (error) throw new Error(error.message);
+  return data;
+};
+
+const updateReview = async ({ reviewId, content, image_url }) => {
+  const { error } = await supabase.from('reviews').update({ content, image_url }).eq('id', reviewId);
   if (error) throw new Error(error.message);
 };
 
-const deleteReview = async ({ id }) => {
-  const { error } = await supabase.from('reviews').delete().eq('id', id);
+const deleteReview = async ({ reviewId }) => {
+  const { error } = await supabase.from('reviews').delete().eq('id', reviewId);
   if (error) throw new Error(error.message);
 };
 
-export { getReviewlist, updateReview, deleteReview };
+export { getReviewlist, updateReview, deleteReview, getReview };
