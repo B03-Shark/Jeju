@@ -2,9 +2,9 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Modal from '../components/Detail/Modal';
 import { useParams } from 'react-router-dom';
-import ReviewModal from '../components/Modal/ReviewModal';
 import ReviewCardList from '../components/Detail/ReviewCardList';
 import Storedata from '../components/Detail/Storedata';
+import PostModal from '../components/ReviewsCreate/PostModal';
 
 function Detail() {
   const [modalDisplay, setModalDisplay] = useState(false);
@@ -14,30 +14,19 @@ function Detail() {
     setModalDisplay((prev) => !prev);
   };
 
-  const [selectedReview, setSelectedReview] = useState(null);
-
-  const handleItemClick = (reviewId) => {
-    setSelectedReview(reviewId);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedReview(null);
-  };
-
   return (
     <div>
       {modalDisplay ? <StModalWrapper onClick={handleModal} /> : ''}
-      {modalDisplay ? <Modal setModalDisplay={setModalDisplay} /> : ''}
+      {modalDisplay ? (
+        <Modal setModalDisplay={setModalDisplay}>
+          <PostModal />
+        </Modal>
+      ) : (
+        ''
+      )}
       <ReviewCardList dataCd={dataCd} />
-      <button onClick={handleModal}>모달 버튼</button>
+      <button onClick={handleModal}>리뷰 작성버튼</button>
       <Storedata />
-
-      <br></br>
-      <br></br>
-      <br></br>
-
-      <button onClick={() => handleItemClick('4b91e35e-6fd4-4eee-bd82-21020f9257bd')}>희수 모달 열기</button>
-      {selectedReview && <ReviewModal reviewId={selectedReview} onClose={handleCloseModal} />}
     </div>
   );
 }
