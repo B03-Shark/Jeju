@@ -1,33 +1,125 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signIn, signOut } from '../components/Auth/auth';
+import { signIn } from '../components/Auth/auth';
+import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from './auth.style';
+import styled from 'styled-components';
+import backgroundImg from '../assets/background_img.jpg';
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+    setIsActive((prev) => !prev);
+  }, []);
 
   const handleSignIn = () => {
     signIn(email, password);
     navigate('/');
   };
 
+  const handleFocus = () => {
+    setIsActive((prev) => !prev);
+  };
+
   return (
-    <div>
-      <label htmlFor="email">이메일</label>
-      <input type="text" placeholder="이메일" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label htmlFor="password">패스워드</label>
-      <input type="password" placeholder="패스워드" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button
-        onClick={() => {
-          handleSignIn();
-        }}
-      >
-        로그인
-      </button>
-      <p onClick={() => navigate('/')}>홈으로</p>
-    </div>
+    <>
+      <StSideImg src={backgroundImg} alt="backgroundImg" />
+      <StDiv>
+        <StContainer style={{ top: '24%' }}>
+          <h3 style={{ marginBottom: '80px' }}>로그인</h3>
+          <StInputGroup>
+            <StInputWrapper>
+              <input
+                type="text"
+                placeholder="이메일을 입력해 주세요"
+                ref={inputRef}
+                onFocus={handleFocus}
+                onBlur={handleFocus}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <StLabel htmlFor="email" $active={isActive}>
+                email
+              </StLabel>
+            </StInputWrapper>
+            <StInputWrapper>
+              <input
+                type="password"
+                placeholder="패스워드를 입력해 주세요"
+                onFocus={handleFocus}
+                onBlur={handleFocus}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <StLabel htmlFor="password" $active={isActive}>
+                password
+              </StLabel>
+            </StInputWrapper>
+          </StInputGroup>
+          <StButton
+            onClick={() => {
+              handleSignIn();
+            }}
+          >
+            로그인
+          </StButton>
+          <StPWrapper>
+            <p onClick={() => navigate('/signUp')}>계정이 없으신가요?</p>
+            <p onClick={() => navigate('/')}>홈으로</p>
+          </StPWrapper>
+        </StContainer>
+      </StDiv>
+    </>
   );
 }
 
 export default Login;
+
+const StLabel = styled.label`
+  font-size: 12px;
+  font-weight: bold;
+  background-color: white;
+  padding: 4px 8px;
+  position: absolute;
+  left: 24px;
+  top: -12px;
+  opacity: 0;
+`;
+
+const StInputWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-left: 54px;
+  position: relative;
+
+  input {
+    width: 80%;
+    color: #adb1b6;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: #f5f5f7;
+    border-radius: 12px;
+    font-size: 16px;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      background-color: white;
+      outline-color: #80befc;
+      outline-style: solid;
+      outline-width: 3px;
+    }
+
+    &:focus ~ label {
+      opacity: ${({ $active }) => ($active ? '0' : '100')};
+    }
+  }
+`;
