@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../components/Auth/auth';
 import supabase from '../supabase/supabase';
+import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from './auth.style';
 import styled from 'styled-components';
+import backgroundImg from '../assets/background_img.jpg';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -10,13 +12,18 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [nicknames, setNicknames] = useState('');
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const fetchUserNicknames = async () => {
     const { data, error } = await supabase.from('users').select('nickname');
     if (error) {
       console.log(error);
     } else {
-      setNicknames(data.map((el) => el.nickname));
+      setNicknames(data.map((response) => response.nickname));
     }
   };
 
@@ -27,17 +34,18 @@ function SignUp() {
       return;
     } else {
       signUp(email, password, nickname);
-      // navigate('/'); 다른 기능의 console.log로 혼잡하므로 현재는 주석처리
       setEmail('');
       setPassword('');
       setNickname('');
+      navigate('/');
     }
   };
 
   return (
-    <div style={{ backgroundColor: '#f8f9fa', height: '100vh' }}>
-      <StContainer>
-        <div className="inner">
+    <>
+      <StSideImg src={backgroundImg} alt="backgroundImg" />
+      <StDiv>
+        <StContainer>
           <h3>회원가입</h3>
           <StInputGroup>
             <StInputWrapper>
@@ -45,6 +53,7 @@ function SignUp() {
               <input
                 type="text"
                 placeholder="이름을 입력해 주세요"
+                ref={inputRef}
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
               />
@@ -75,90 +84,46 @@ function SignUp() {
           >
             회원가입
           </StButton>
-          <p onClick={() => navigate('/login')}>이미 계정을 가지고 계신가요?</p>
-          <p onClick={() => navigate('/')}>홈으로</p>
-        </div>
-      </StContainer>
-    </div>
+          <StPWrapper>
+            <p onClick={() => navigate('/login')}>이미 계정을 가지고 계신가요?</p>
+            <p onClick={() => navigate('/')}>홈으로</p>
+          </StPWrapper>
+        </StContainer>
+      </StDiv>
+    </>
   );
 }
 
 export default SignUp;
 
-const StContainer = styled.div`
-  background-color: white;
-  position: fixed;
-  right: 0;
-  width: 65vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  .inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+const StInputWrapper = styled.div`
+  width: 100%;
+  height: 100%;
 
-  h3 {
-    font-weight: bold;
-    font-size: 22px;
-  }
-
-  p:hover {
-    cursor: pointer;
-    color: #f9ed32;
-  }
-`;
-
-const StInputGroup = styled.div`
-  margin-bottom: 15px;
   label {
     display: block;
-    margin-bottom: 5px;
-    color: #adb1b6;
-    font-size: 1rem;
+    margin-bottom: 4px;
+    color: #7c838a;
+    font-size: 16px;
   }
 
   input {
-    width: 100%;
+    width: 96%;
     color: #adb1b6;
-    padding: 12px;
+    padding: 16px;
     box-sizing: border-box;
     background-color: #dfe3e7;
-    border: 0;
-    border-radius: 8px;
-  }
-
-  input:focus {
-    /*
-    background-color: white;
-    border: medium;
-    border-color: #80befc;
-    outline: none;
-    */
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
   }
 
   input:hover {
     cursor: pointer;
   }
-`;
 
-const StInputWrapper = styled.div`
-  margin: 10px;
-`;
-
-const StButton = styled.button`
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 10px;
-
-  &:disabled {
-    background-color: #a0a0a0;
+  input:focus {
+    outline-color: #80befc;
+    background-color: white;
   }
 `;

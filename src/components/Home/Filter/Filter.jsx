@@ -43,7 +43,7 @@ function Filter() {
         <StCategoryTitle>지역</StCategoryTitle>
         <StCategoryContent>
           <label>
-            <input type="checkbox" checked={true} />
+            <StCheckBoxInput type="checkbox" checked={true} />
             제주시
           </label>
         </StCategoryContent>
@@ -94,11 +94,16 @@ export default Filter;
 const StMainWrapper = styled.aside`
   display: flex;
   flex-direction: column;
-  border: 1px solid #cfcfcf;
-  width: 150px;
-  height: 100%;
+  margin-top: 58px;
+  padding-bottom: 80px;
+  border: 1px solid #ffca80;
+  min-width: 150px;
+  height: 50%;
 `;
 
+const StCheckBoxInput = styled.input`
+  accent-color: #ffba59;
+`;
 const StCategory = styled.section`
   width: 100%;
 `;
@@ -106,8 +111,9 @@ const StCategory = styled.section`
 const StCategoryTitle = styled.h4`
   font-size: 15px;
   font-weight: 700;
-  background-color: #cfcfcf;
+  background-color: #ffb752e0;
   padding: 10px;
+  color: #5b5b5b;
 `;
 
 const StCategoryContent = styled.div`

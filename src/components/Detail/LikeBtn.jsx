@@ -68,7 +68,7 @@ function LikeBtn({ likes, review_id, dataCd }) {
       onClick={(event) => {
         event.stopPropagation();
         if (!user_id) {
-          return alert('로그인이 필요한 기능입니다.');
+          return alert('로그인이 필요합니다.');
         }
 
         isLike ? deleteLike({ user_id, review_id }) : addLike({ user_id, review_id });
