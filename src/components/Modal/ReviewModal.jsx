@@ -100,7 +100,7 @@ function ReviewModal({ review, onClose }) {
           <p>{data?.content}</p>
         </div>
       )}
-      <button onClick={() => deleteMutation.mutate({ reviewId })}>삭제</button>
+      <button onClick={() => deleteMutation.mutate({ reviewId: review.id })}>삭제</button>
       {isEditing ? (
         <button
           onClick={() =>

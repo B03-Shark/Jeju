@@ -3,7 +3,7 @@ import { addLikeData, deleteLikeData } from '../../api/like.api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 function LikeBtn({ likes, review_id, dataCd }) {
-  const user = JSON.parse(localStorage.getItem('sb-rqjikcurphxkrtbdfegi-auth-token'))?.user;
+  const user = JSON.parse(localStorage.getItem('user'));
   const user_id = user ? user.id : null;
   const queryClient = useQueryClient();
   const isLike = [...likes].find((like) => {
@@ -83,9 +83,10 @@ function LikeBtn({ likes, review_id, dataCd }) {
 
 const StLikeBtn = styled.button`
   margin-left: auto;
-  border: 1px solid gray;
+  border: 1px solid ${(props) => (props.$islike ? '#FF822D' : 'gray;')};
   border-radius: 10px;
-  background-color: ${(props) => (props.$islike ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0.1)')};
+  background-color: ${(props) => (props.$islike ? '#ffdfaf' : 'white')};
+  color: ${(props) => (props.$islike ? 'black' : 'rgba(0, 0, 0, 0.7)')};
 `;
 
 export default LikeBtn;
