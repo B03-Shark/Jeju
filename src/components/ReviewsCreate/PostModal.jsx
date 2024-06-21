@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { uploadImage } from '../../api/image.api';
 import { addReview } from '../../api/review.api';
-import { useParams } from 'react-router-dom';
 import { getUser } from '../Auth/auth';
 
 function PostModal({ handleModal }) {
@@ -47,7 +47,7 @@ function PostModal({ handleModal }) {
     <StModal>
       <StForm onSubmit={handleSubmit}>
         <StLabel htmlFor="image" imgSrc={imgSrc}>
-          이미지
+          {!imgSrc && "이미지"}
         </StLabel>
         <StImageUpload type="file" id="image" accept="image/*" onChange={handleImageChange} />
         <StText>리뷰를 작성 해 보세요!</StText>
