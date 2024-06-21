@@ -183,9 +183,9 @@
       Tanstack Query를 사용하여 저장된 캐시데이터를 먼저 Optimisitic Update하고 Supabase에 like CRUD 요청을 보냅니다.
   - Modal.jsx
   - ReviewCard.jsx
-    -review api를 호출하여 해당 Data에 맞는 review list를 제공하는 컴포넌트 입니다.
+    - review api를 호출하여 해당 Data에 맞는 review list를 제공하는 컴포넌트 입니다.
   - ReviewCardList.jsx
-    -ReviewCardList 컴포넌트에서 각각의 review 데이터를 전달받아 카드로 만드는 컴포넌트 입니다.
+    - ReviewCardList 컴포넌트에서 각각의 review 데이터를 전달받아 카드로 만드는 컴포넌트 입니다.
   - SelectedStoredata.jsx
     - 선택된 가게의 상세 정보를 표시합니다.
   - SelectedStoreMap.jsx
