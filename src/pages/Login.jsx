@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signIn } from '../components/Auth/auth';
 import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from './auth.style';
 import styled from 'styled-components';
-import backgroundImg from '../assets/background_img.jpg';
+import login2 from '../assets/login2.png';
 
 function Login() {
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ function Login() {
   };
 
   return (
-    <>
-      <StSideImg src={backgroundImg} alt="backgroundImg" />
+    <div style={{ display: 'flex' }}>
+      <StSideImg src={login2} alt="backgroundImg" />
       <StDiv>
         <StContainer style={{ top: '24%' }}>
           <h3 style={{ marginBottom: '80px' }}>로그인</h3>
@@ -74,7 +74,7 @@ function Login() {
           </StPWrapper>
         </StContainer>
       </StDiv>
-    </>
+    </div>
   );
 }
 
@@ -99,7 +99,7 @@ const StInputWrapper = styled.div`
 
   input {
     width: 80%;
-    color: #adb1b6;
+    color: #000000;
     padding: 16px;
     box-sizing: border-box;
     background-color: #f5f5f7;
@@ -113,7 +113,7 @@ const StInputWrapper = styled.div`
 
     &:focus {
       background-color: white;
-      outline-color: #80befc;
+      outline-color: #ffb752;
       outline-style: solid;
       outline-width: 3px;
     }
