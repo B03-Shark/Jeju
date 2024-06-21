@@ -30,7 +30,7 @@
 | :----------------------------------------------------------------------: | :--------------------------------------------------------------------: | :------------------------------------------------------------------: | :------------------------------------------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
 | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/bfef5720-c3a7-4f5e-ab89-c343419b58e3" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/08fed2b3-13ca-4f3c-b686-10c5d042b5ef" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/74534d48-ddc9-4505-bf04-b10771a4866f" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/e1afd38d-14d5-4987-8e2e-35bcbbc56db0" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/329d91ec-c7f5-49a0-95e1-cb9a4e3dfd09" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/085c98ee-5f4d-4569-80c1-8181bbe4c59e" width="200"> |
 |                                   리더                                   |                                  팀원                                  |                                팀원                                |                                 팀원                                 |                                  팀원                                   |                                  팀원                                   |
-|               [hb9901](https://github.com/hb9901)                |                [hb9901](https://github.com/hb9901)                 |                 [hb9901](https://github.com/hb9901)                  |                 [YCDM03](https://github.com/YCDM03)                  |                [hb9901](https://github.com/hb9901)                |                [hb9901](https://github.com/hb9901)                |
+|               [hb9901](https://github.com/hb9901)                |                [hb9901](https://github.com/hb9901)                 |                 yeseul0809                  |                 [YCDM03](https://github.com/YCDM03)                  |                [hb9901](https://github.com/hb9901)                |                [hb9901](https://github.com/hb9901)                |
 
 <br />
 
@@ -187,17 +187,21 @@
   - ReviewCard.jsx
   - ReviewCardList.jsx
   - SelectedStoredata.jsx
+    - 선택된 가게의 상세 정보를 표시합니다.
   - SelectedStoreMap.jsx
+    - 선택된 가게의 지도를 확대해서 표시합니다.
 - Home
   - Filter
     - 체크박스에 선택한 옵션을 zustand의 store에 저장하고 이를 통해 착한 가격 업소 데이터를 필터링 시켜주는 컴포넌트입니다.
   - List
+    - 검색어와 필터 조건에 따라 제주도 가게 목록을 필터링하여 보여주는 리스트 컴포넌트입니다. 
   - Search
     - 착한 가격 업소의 이름을 검색하여 정보를 zustand에 저장하고 이를 착한 가격 업소 데이터에서 필터링하여 해당하는 업소를 찾을 수 있는 컴포넌트 입니다.
   - StoresMap
     - kakao-map-sdk를 활용하여 착한 가격 업소 데이터와 Filter와 Search 컴포넌트에서 저장한 필터 정보로 사용자가 선택하거나 검색한 업소들을 지도에서 확인 할 수 있는 컴포넌트 입니다.
 - Layout
   - Header.jsx
+    - 로그인 상태에 따라 유저네임 표시 및 로그인/로그아웃 기능을 제공하는 헤더 컴포넌트입니다. 
   - Layout.jsx
     - Header를 렌더링하고 Outlet을 통해 자식 라우트를 표시합니다.   
 - Login
@@ -213,10 +217,12 @@
 - useJejuStore.js
   - 제주시 착한 가격 업소 데이터를 호출하여 zustand의 초기값으로 설정합니다.
 - useSearch.js
+  - 검색어를 관리하고 적용하는 훅입니다.
 
 ### 📂pages
 
 - Detail.jsx
+  - 제주도 가게의 상세 정보를 표시하고, 리뷰 작성 모달을 관리하는 상세 페이지 컴포넌트입니다.
 - Home.jsx
   - HomePage를 보여주며 필터, 검색, 지도 컴포넌트로 이루어져 있습니다.
 - Login.jsx
@@ -233,7 +239,8 @@
   - 가격대를 선택할 때에는 setPriceFilter를 호출하여 priceFilter의 값을 변경합니다.
 - filteredjeju.store.js
   - initJejuStores 함수를 호출하여 제주시 착한 가격 업소 데이터를 전처리하고 jejuStores에 저장합니다.
-- SearchStore.js 
+- SearchStore.js
+  - input 칸에 입력되고있는 검색어 상태를 관리합니다.
 
 
 <br />
