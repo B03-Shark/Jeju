@@ -54,15 +54,35 @@
 <img src="https://github.com/B03-Shark/Jeju/assets/50387658/b90859a2-c9e1-4b02-9638-20659d0c98ab" width="600px">
 
 
+### 상세 페이지
+
+- 리뷰 작성
+
+<img src="https://github.com/B03-Shark/Jeju/assets/50387658/3f7477fb-c776-45b9-b5fb-911cd09c2a08" width="600px">
+
+- 리뷰 좋아요
+
+<img src="https://github.com/B03-Shark/Jeju/assets/50387658/dd6e85b2-9289-4a12-a11f-5f7bc264640c" width="600px">
+
+- 리뷰 수정
+
+<img src="https://github.com/B03-Shark/Jeju/assets/50387658/b4f2f1b1-04fb-4b8a-ae1c-d84a47889e23" width="600px">
+
+- 리뷰 삭제
+
+<img src="https://github.com/B03-Shark/Jeju/assets/50387658/95f13d9e-3a6a-4e5c-bed0-6fa0bc0948d6" width="600px">
+
 ### 로그인
 
+- 로그인
+  
+<img src="https://github.com/B03-Shark/Jeju/assets/50387658/1f1d5287-b28a-4fc8-a8a4-b70b8de7e1e2" width="600px">
 
+### 회원가입
 
-### 게시판
+- 회원가입
 
-
-
-### 상세 페이지
+<img src="https://github.com/B03-Shark/Jeju/assets/50387658/32892e85-eead-4114-a135-92e945bb3d28" width="600px">
 
 <br />
 
