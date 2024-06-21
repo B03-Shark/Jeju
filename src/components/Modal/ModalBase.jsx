@@ -7,13 +7,13 @@ function ModalBase({ isOpen, onClose, children }) {
     <StModalBackground onClick={onClose}>
       <StModalContainer onClick={(e) => e.stopPropagation()}>
         {children}
-        <StExitBtn onClick={onClose}>X</StExitBtn>
+        <StExitBtn onClick={onClose}>✖️</StExitBtn>
       </StModalContainer>
     </StModalBackground>
   );
 }
 
-const StModalBackground = styled.div`
+export const StModalBackground = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@ const StModalBackground = styled.div`
   z-index: 1000;
 `;
 
-const StModalContainer = styled.div`
+export const StModalContainer = styled.div`
   background-color: white;
   padding: 1.5rem;
   border-radius: 10px;
@@ -35,13 +35,13 @@ const StModalContainer = styled.div`
   position: relative;
 `;
 
-const StExitBtn = styled.button`
+export const StExitBtn = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
 `;
 

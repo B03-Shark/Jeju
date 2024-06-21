@@ -1,15 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../components/Auth/auth';
-import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from './auth.style';
+import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from '../style/auth.style';
 import styled from 'styled-components';
+import login2 from '../assets/login2.png';
 import backgroundImg from '../assets/background_img.jpg';
+import useUserStore from '../zustand/user.store';
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -17,8 +21,9 @@ function Login() {
     setIsActive((prev) => !prev);
   }, []);
 
-  const handleSignIn = () => {
-    signIn(email, password);
+  const handleSignIn = async () => {
+    const user = await signIn(email, password);
+    setUser(user);
     navigate('/');
   };
 
@@ -27,8 +32,8 @@ function Login() {
   };
 
   return (
-    <>
-      <StSideImg src={backgroundImg} alt="backgroundImg" />
+    <div style={{ display: 'flex' }}>
+      <StSideImg src={login2} alt="backgroundImg" />
       <StDiv>
         <StContainer style={{ top: '24%' }}>
           <h3 style={{ marginBottom: '80px' }}>로그인</h3>
@@ -74,7 +79,7 @@ function Login() {
           </StPWrapper>
         </StContainer>
       </StDiv>
-    </>
+    </div>
   );
 }
 
@@ -99,7 +104,7 @@ const StInputWrapper = styled.div`
 
   input {
     width: 80%;
-    color: #adb1b6;
+    color: #000000;
     padding: 16px;
     box-sizing: border-box;
     background-color: #f5f5f7;
@@ -113,7 +118,7 @@ const StInputWrapper = styled.div`
 
     &:focus {
       background-color: white;
-      outline-color: #80befc;
+      outline-color: #ffb752;
       outline-style: solid;
       outline-width: 3px;
     }
