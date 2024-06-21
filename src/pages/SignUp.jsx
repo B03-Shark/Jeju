@@ -4,7 +4,7 @@ import { signUp } from '../components/Auth/auth';
 import supabase from '../supabase/supabase';
 import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from './auth.style';
 import styled from 'styled-components';
-import backgroundImg from '../assets/background_img.jpg';
+import login2 from '../assets/login2.png';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -42,8 +42,8 @@ function SignUp() {
   };
 
   return (
-    <>
-      <StSideImg src={backgroundImg} alt="backgroundImg" />
+    <div style={{ display: 'flex' }}>
+      <StSideImg src={login2} alt="backgroundImg" />
       <StDiv>
         <StContainer>
           <h3>회원가입</h3>
@@ -90,7 +90,7 @@ function SignUp() {
           </StPWrapper>
         </StContainer>
       </StDiv>
-    </>
+    </div>
   );
 }
 
@@ -109,7 +109,7 @@ const StInputWrapper = styled.div`
 
   input {
     width: 96%;
-    color: #adb1b6;
+    color: #000000;
     padding: 16px;
     box-sizing: border-box;
     background-color: #dfe3e7;
@@ -123,7 +123,7 @@ const StInputWrapper = styled.div`
   }
 
   input:focus {
-    outline-color: #80befc;
+    outline-color: #ffb752;
     background-color: white;
   }
 `;

@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const StSideImg = styled.img`
   height: 100vh;
+  width: 50rem;
 `;
 
 export const StDiv = styled.div`
   background-color: white;
-  position: fixed;
+  margin: 0 auto;
   right: 0;
   width: 60vw;
   height: 100vh;
@@ -41,7 +42,7 @@ export const StButton = styled.button`
   border: none;
   border-radius: 8px;
   padding: 8px 100px;
-  background-color: #007dfa;
+  background-color: #ffb752;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -60,12 +61,13 @@ export const StPWrapper = styled.div`
   margin-top: 20px;
 
   p {
-    color: #7c838a;
-    font-size: 14px;
+    color: #bbbbbbf0;
+    font-size: 15px;
+    font-weight: 600;
   }
 
   p:hover {
     cursor: pointer;
-    color: #f9ed32;
+    color: #ffb752;
   }
 `;
