@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 export const StSideImg = styled.img`
   height: 100vh;
-  width: 50rem;
+  @media (max-width: 1300px) {
+    opacity: 0;
+  }
+  transition: all 0.2s;
 `;
 
 export const StDiv = styled.div`
@@ -13,6 +16,10 @@ export const StDiv = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+  @media (max-width: 1300px) {
+    width: 100%;
+  }
+  transition: all 0.2s;
 `;
 
 export const StContainer = styled.div`

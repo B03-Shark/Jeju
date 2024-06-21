@@ -1,15 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../components/Auth/auth';
-import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from './auth.style';
+import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from '../style/auth.style';
 import styled from 'styled-components';
 import login2 from '../assets/login2.png';
+import backgroundImg from '../assets/background_img.jpg';
+import useUserStore from '../zustand/user.store';
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -17,8 +21,9 @@ function Login() {
     setIsActive((prev) => !prev);
   }, []);
 
-  const handleSignIn = () => {
-    signIn(email, password);
+  const handleSignIn = async () => {
+    const user = await signIn(email, password);
+    setUser(user);
     navigate('/');
   };
 

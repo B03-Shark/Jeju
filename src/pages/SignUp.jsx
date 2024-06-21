@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../components/Auth/auth';
 import supabase from '../supabase/supabase';
-import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from './auth.style';
+import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from '../style/auth.style';
 import styled from 'styled-components';
 import login2 from '../assets/login2.png';
 
