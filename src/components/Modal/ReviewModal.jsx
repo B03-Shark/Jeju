@@ -1,16 +1,14 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import { deleteReview, getReview, updateReview } from '../../api/review.api';
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
+import { deleteReview, updateReview, getReview } from '../../api/review.api';
 import ModalBase from './ModalBase';
 import { getUser } from '../Auth/auth';
 import styled from 'styled-components';
 
 function ReviewModal({ review, onClose }) {
   const queryClient = useQueryClient();
-
   const [isEditing, setIsEditing] = useState(false);
   const [editedReview, setEditedReview] = useState({ content: '', image_url: '', nickname: '' });
-
   const { data, isLoading } = useQuery({
     queryKey: ['review', review.id],
     queryFn: getReview,
@@ -18,13 +16,11 @@ function ReviewModal({ review, onClose }) {
       setEditedReview(data);
     }
   });
-
   useEffect(() => {
     if (isEditing && data) {
       setEditedReview(data);
     }
   }, [isEditing, data]);
-
   const updateMutation = useMutation({
     mutationFn: updateReview,
     onSuccess: () => {
@@ -38,7 +34,6 @@ function ReviewModal({ review, onClose }) {
       console.log(error);
     }
   });
-
   const deleteMutation = useMutation({
     mutationFn: deleteReview,
     onSuccess: () => {
@@ -46,7 +41,6 @@ function ReviewModal({ review, onClose }) {
       onClose();
     }
   });
-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -57,11 +51,9 @@ function ReviewModal({ review, onClose }) {
       reader.readAsDataURL(file);
     }
   };
-
   const handleContentChange = (e) => {
     setEditedReview((prev) => ({ ...prev, content: e.target.value }));
   };
-
   const user = getUser();
 
   const isShowEditing = review.user_id == user?.id;

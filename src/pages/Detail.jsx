@@ -100,4 +100,10 @@ const StStoreDataRight = styled.div`
 
 const StReviewButton = styled.button`
   width: 150px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #ffb752;
+  color: white;
+  text-align: bl;
 `;
