@@ -206,6 +206,7 @@
     - 리뷰 카드의 좋아요 버튼을 구현한 컴포넌트 입니다. 사용자를 구분하며,
       Tanstack Query를 사용하여 저장된 캐시데이터를 먼저 Optimisitic Update하고 Supabase에 like CRUD 요청을 보냅니다.
   - Modal.jsx
+    - 작성 모달의 베이스 컴포넌트 입니다. 
   - ReviewCard.jsx
     - review api를 호출하여 해당 Data에 맞는 review list를 제공하는 컴포넌트 입니다.
   - ReviewCardList.jsx
