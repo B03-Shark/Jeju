@@ -207,7 +207,9 @@
 - Login
 - Modal
   - ModalBase.jsx
+    - styled-components를 사용하여 모달 창 컴포넌트를 구현하는 컴포넌트입니다.
   - ReviewModal.jsx
+      - react-query를 사용하여 리뷰 데이터를 조회하고, 수정 및 삭제 기능을 제공하는 모달 컴포넌트를 구현하는 컴포넌트입니다.
 - ReviewCreate
   - PostModal.jsx
 - SignUp
