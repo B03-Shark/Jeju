@@ -30,7 +30,7 @@
 | :----------------------------------------------------------------------: | :--------------------------------------------------------------------: | :------------------------------------------------------------------: | :------------------------------------------------------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
 | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/bfef5720-c3a7-4f5e-ab89-c343419b58e3" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/08fed2b3-13ca-4f3c-b686-10c5d042b5ef" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/74534d48-ddc9-4505-bf04-b10771a4866f" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/e1afd38d-14d5-4987-8e2e-35bcbbc56db0" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/329d91ec-c7f5-49a0-95e1-cb9a4e3dfd09" width="200"> | <img src="https://github.com/B03-Shark/Jeju/assets/50387658/085c98ee-5f4d-4569-80c1-8181bbe4c59e" width="200"> |
 |                                   리더                                   |                                  팀원                                  |                                팀원                                |                                 팀원                                 |                                  팀원                                   |                                  팀원                                   |
-|               [hb9901](https://github.com/hb9901)                |                [hb9901](https://github.com/hb9901)                 |                 yeseul0809                  |                 [YCDM03](https://github.com/YCDM03)                  |                [hb9901](https://github.com/hb9901)                |                [heesu21](https://github.com/heesu21)                |
+|               [hb9901](https://github.com/hb9901)                |                [hb9901](https://github.com/hb9901)                 |                 yeseul0809                  |                 [YCDM03](https://github.com/YCDM03)                  |                [fjw1010](https://github.com/fjw1010)                |                [heesu21](https://github.com/heesu21)                |
 
 <br />
 
@@ -212,6 +212,7 @@
       - react-query를 사용하여 리뷰 데이터를 조회하고, 수정 및 삭제 기능을 제공하는 모달 컴포넌트를 구현하는 컴포넌트입니다.
 - ReviewCreate
   - PostModal.jsx
+    - 리뷰 작성하기 버튼을 클릭 했을 때, 모달 창으로 리뷰를 작성할 수 있는 창이 뜨는 컴포넌트 입니다.
 - SignUp
 
 ### 📂hooks
