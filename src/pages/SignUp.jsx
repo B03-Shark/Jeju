@@ -37,7 +37,7 @@ function SignUp() {
       setEmail('');
       setPassword('');
       setNickname('');
-      navigate('/login');
+      navigate('/');
     }
   };
 
