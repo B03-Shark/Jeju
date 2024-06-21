@@ -51,6 +51,7 @@ export const signIn = async (email, password) => {
       })
     );
     localStorage.setItem('isLoggedin', true);
+    return user;
   }
 };
 

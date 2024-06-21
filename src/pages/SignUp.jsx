@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../components/Auth/auth';
 import supabase from '../supabase/supabase';
-import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from './auth.style';
+import { StButton, StContainer, StDiv, StInputGroup, StPWrapper, StSideImg } from '../style/auth.style';
 import styled from 'styled-components';
 import backgroundImg from '../assets/background_img.jpg';
 
@@ -109,7 +109,7 @@ const StInputWrapper = styled.div`
 
   input {
     width: 96%;
-    color: #adb1b6;
+    color: black;
     padding: 16px;
     box-sizing: border-box;
     background-color: #dfe3e7;
@@ -123,7 +123,7 @@ const StInputWrapper = styled.div`
   }
 
   input:focus {
-    outline-color: #80befc;
+    outline-color: #ffb752;
     background-color: white;
   }
 `;

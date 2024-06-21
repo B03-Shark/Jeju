@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import useSearch from '../../hooks/useSearch';
 import { useRef, useState } from 'react';
 import { signOut } from '../Auth/auth';
+import useUserStore from '../../zustand/user.store';
 
 function Header() {
   const navigate = useNavigate();
@@ -11,12 +12,8 @@ function Header() {
   const searchInputRef = useRef();
 
   const [isLoggedin, setIsLoggedin] = useState(JSON.parse(localStorage.getItem('isLoggedin')));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const searchWord = searchInputRef.current.value;
-    applySearch(searchWord);
-  };
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
 
   const handleLogoClick = () => {
     applySearch('');
@@ -24,9 +21,10 @@ function Header() {
     searchInputRef.current.value = '';
   };
 
-  const handleLogInOut = () => {
+  const handleLogInOut = async () => {
     if (isLoggedin) {
-      signOut();
+      await signOut();
+      setUser(null);
       setIsLoggedin(false);
     } else {
       setIsLoggedin(localStorage.getItem('isLoggedin'));
@@ -45,7 +43,7 @@ function Header() {
             <div>{JSON.parse(localStorage.getItem('user')).nickname}</div>
           </StNicknameWrap>
         )}
-        <StButton onClick={() => handleLogInOut()}>{isLoggedin ? '🍊 로그아웃' : '로그인'}</StButton>
+        <StButton onClick={() => handleLogInOut()}>{user ? '🍊 로그아웃' : '로그인'}</StButton>
       </StRigthWrap>
     </StHeader>
   );

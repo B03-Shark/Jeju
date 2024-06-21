@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const StSideImg = styled.img`
   height: 100vh;
+  @media (max-width: 1300px) {
+    opacity: 0;
+  }
+  transition: all 0.2s;
 `;
 
 export const StDiv = styled.div`
@@ -12,6 +16,10 @@ export const StDiv = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+  @media (max-width: 1300px) {
+    width: 100%;
+  }
+  transition: all 0.2s;
 `;
 
 export const StContainer = styled.div`
@@ -41,7 +49,7 @@ export const StButton = styled.button`
   border: none;
   border-radius: 8px;
   padding: 8px 100px;
-  background-color: #007dfa;
+  background-color: #ffb752;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -66,6 +74,6 @@ export const StPWrapper = styled.div`
 
   p:hover {
     cursor: pointer;
-    color: #f9ed32;
+    color: #ffba59;
   }
 `;
