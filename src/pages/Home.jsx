@@ -1,39 +1,41 @@
 import styled from 'styled-components';
 import Filter from '../components/Home/Filter/Filter';
 import List from '../components/Home/List/List';
+import SearchForm from '../components/Home/Search/SearchForm';
 import StoresMap from '../components/Home/StoresMap';
 import useJejuStore from '../hooks/useJejuStore';
-import useSearch from '../hooks/useSearch';
 
 function Home() {
-  const { jejuStores } = useJejuStore();
-  const { appliedSearchWord } = useSearch();
+  useJejuStore();
 
   return (
     <>
       <StWrapper>
         <Filter />
-        <StoresMap />
+        <StMainWrapper>
+          <SearchForm />
+          <StoresMap />
+          <List />
+        </StMainWrapper>
       </StWrapper>
-      <StBottomWrapper>
-        <List jejuStores={jejuStores} searchWord={appliedSearchWord} />
-      </StBottomWrapper>
     </>
   );
 }
 
 export default Home;
 
-const StWrapper = styled.div`
+const StWrapper = styled.main`
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 45px;
   max-width: 1800px;
   margin-bottom: 36px;
 `;
 
-const StBottomWrapper = styled.div`
+const StMainWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 `;

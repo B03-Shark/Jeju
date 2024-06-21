@@ -3,16 +3,16 @@ import LikeBtn from './LikeBtn';
 
 function ReviewCard({ review, onClick }) {
   const { id, created_at, content, image_url, nickname, likes, dataCd } = review;
-
+  const dateY = created_at.slice(0, 10);
   return (
     <>
       <StCardDiv onClick={onClick}>
         <StUserBox>
-          <StUserAvatar />
-          <div>
+          <StUserAvatar>🍊</StUserAvatar>
+          <StInfo>
             <StUserName>{nickname}</StUserName>
-            <StUserDate>{created_at}</StUserDate>
-          </div>
+            <StUserDate>{dateY}</StUserDate>
+          </StInfo>
         </StUserBox>
         <StImgDiv>
           <img src={image_url} alt="" />{' '}
@@ -27,10 +27,11 @@ function ReviewCard({ review, onClick }) {
 }
 
 const StCardDiv = styled.div`
-  width: 260px;
+  min-width: 260px;
   height: 330px;
-  border: 2px solid black;
+  border: 1px solid grey;
   border-radius: 20px;
+  background-color: white;
 `;
 
 const StUserBox = styled.div`
@@ -44,9 +45,20 @@ const StUserBox = styled.div`
 const StUserAvatar = styled.div`
   width: 30px;
   height: 30px;
-  border: 2px solid black;
+  border: 1px solid white;
   border-radius: 17px;
-  background-color: gray;
+  background-color: #ffedd2;
+  text-align: center;
+  align-content: center;
+  font-size: 20px;
+`;
+
+const StInfo = styled.div`
+  margin: 2px 0;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const StUserName = styled.h2`
@@ -97,7 +109,8 @@ const StImgDiv = styled.div`
     max-width: 230px;
     height: 150px;
     object-fit: scale-down;
-    border: 2px solid black;
+    border: 1px solid black;
+    border-radius: 5px;
   }
 `;
 

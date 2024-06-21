@@ -1,6 +1,6 @@
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
-import { deleteReview, updateReview, getReview } from '../../api/review.api';
+import { deleteReview, getReview, updateReview } from '../../api/review.api';
 import ModalBase from './ModalBase';
 import { getUser } from '../Auth/auth';
 import styled from 'styled-components';

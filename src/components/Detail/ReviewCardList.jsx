@@ -17,7 +17,6 @@ function ReviewCardList({ dataCd }) {
     queryFn: getReviewlist
   });
 
-  console.log(reviewList);
   if (isPending) {
     return <div>리뷰 리스트를 로딩중입니다...</div>;
   }
@@ -45,7 +44,14 @@ function ReviewCardList({ dataCd }) {
 }
 
 const StCardBox = styled.div`
+  max-width: 1090px;
+  margin: 30px auto;
+  padding: 30px;
   display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid gray;
+  gap: 10px;
+  /* justify-content: center; */
 `;
 
 export default ReviewCardList;
