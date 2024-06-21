@@ -43,6 +43,20 @@
 ## 📝 주요 기능
 
 ### 메인페이지
+![로그인 전후 메인페이지](https://github.com/B03-Shark/Jeju/assets/166012944/e6201e79-bbcc-4eac-9154-d1aefa4dbd65)
+
+<br>
+- 업종 필터적용하는 모습입니다.
+
+![필터적용](https://github.com/B03-Shark/Jeju/assets/166012944/326bdb2e-467c-4c3e-8ada-380b695b2d98)
+
+
+![가격필터 적용 메인페이지](https://github.com/B03-Shark/Jeju/assets/166012944/c46ff501-120c-4c43-a13d-996d8675ec8a)
+
+<br>
+
+
+<img src="https://github.com/B03-Shark/Jeju/assets/166012944/73b15d67-931f-48bd-babf-82f5f9ed5b27" width="500">
 
 
 
