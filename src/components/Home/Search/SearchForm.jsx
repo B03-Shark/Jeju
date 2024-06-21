@@ -53,4 +53,5 @@ const StInput = styled.input`
   height: 2rem;
   border: solid 1px gray;
   border-radius: 10px;
+  padding-left: 10px;
 `;
