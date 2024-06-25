@@ -8,8 +8,8 @@
 제주시에 있는 착한 가격 업소를 소개하고, 각 업소에 대한 리뷰를 통해서 정보를 공유하는 웹 서비스 입니다.
 
 # ✨ 사이트 보러가기
-  예시사이트
-
+[https://b03-shark-vercel.vercel.app/](https://b03-shark-vercel.vercel.app/)
+  
 # 라이브러리
 
 - styled-reset
